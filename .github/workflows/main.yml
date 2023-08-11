@@ -28,6 +28,6 @@ jobs:
     - name: 部署
       uses: easingthemes/ssh-deploy@v2.1.5
       with:
-        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }} # 指定密钥，key即密钥名称
+        SSH_PRIVATE_KEY: ${{ secrets.ACCESS_TOKEN}} # 指定密钥，key即密钥名称
         ARGS: '-rltgoDzvO --delete'
         TARGET: /root/my-repo # 打包后的 build 文件夹将放在 /root/my-repo
