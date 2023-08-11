@@ -1,33 +1,21 @@
-name: 构建页面
-on:
-  push:  # 指定触发事件
-    branches:
-      - main  # 指定触发 action 的分支
-
+name: Build and Deploy
+on: [push]
+permissions:
+  contents: write
 jobs:
-  main:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
 
-    # 拉取github仓库代码
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        persist-credentials: false
-
-    # 执行依赖安装
-    - name: 安装依赖
-      run: |
-          npm install
-        
-    # 执行构建步骤
-    - name: 构建
-      run: |
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        run: |
+          npm ci
           npm run build
-    # 执行部署
-    - name: 部署
-      uses: JamesIves/github-pages-deploy-action@releases/v3 # 这个action会根据配置自动推送代码到指定分支
-      with:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # 指定密钥
-        BRANCH: gh-pages  ##指定推送到的远程分支
-        FOLDER: /dist # 指定构建之后要推送哪个目录的代码
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build # The folder the action should deploy.
