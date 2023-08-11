@@ -6,7 +6,7 @@ const list = [
     path: '/',
     name: 'Home',
     component: Home,
-    meta: { title: '我们的回忆' }
+    meta: { title: 'RainyDreams\'s Personal Website' }
   },
 ]
 const router = new createRouter({
@@ -16,7 +16,7 @@ const router = new createRouter({
   routes: list
 })
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title || '我们的回忆 | 赤峰六中2020级6班'
+  document.title = to.meta.title || 'RainyDreams'
   next()
 })
 
