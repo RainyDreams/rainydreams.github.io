@@ -79,32 +79,33 @@ export async function encode(text,password){
 
 export async function decode(text,password){
   try{
-  text = Decode64(text.replaceAll('_','='));
-  console.log(text,password)
-  if(typeof password !== 'string' || !password) password = PUBLIC_KEY_DECODE;password = DoPass(password);
-  let _BEGIN = text.substring(0,6)
-  let _END = text.substring(text.length-6,text.length)
-  let MAIN = text.substring(7,text.length-7)
-  let ARR = MAIN.split('_')
-  let DECODE_STR = ''
-  let HASH_ARR = new Array([null])
-  for (let i=0,p=0; i < ARR.length; i++,p++) {
-    let tmp = parseInt(ARR[i],16)-(password.substring(p, p+1).codePointAt())
-    DECODE_STR += ""+String.fromCharCode( tmp )
-    if(p==password.length-1){
-      p=-1
+    text = Decode64(text.replaceAll('_','='));
+    console.log(text,password)
+    if(typeof password !== 'string' || !password) password = PUBLIC_KEY_DECODE;password = DoPass(password);
+    let _BEGIN = text.substring(0,6)
+    let _END = text.substring(text.length-6,text.length)
+    let MAIN = text.substring(7,text.length-7)
+    let ARR = MAIN.split('_')
+    let DECODE_STR = ''
+    let HASH_ARR = new Array([null])
+    for (let i=0,p=0; i < ARR.length; i++,p++) {
+      let tmp = parseInt(ARR[i],16)-(password.substring(p, p+1).codePointAt())
+      DECODE_STR += ""+String.fromCharCode( tmp )
+      if(p==password.length-1){
+        p=-1
+      }
+      HASH_ARR.push(tmp)
     }
-    HASH_ARR.push(tmp)
-  }
-  let HASH_ = await digestMessage(JSON.stringify(HASH_ARR))
-  console.log(DECODE_STR,HASH_)
-  let BEGIN = HASH_.substring(1,7)
-  let END = HASH_.substring(HASH_.length-7,HASH_.length-1)
-  console.log(BEGIN,_BEGIN,END,_END)
-  if(BEGIN==_BEGIN && END == _END){
-    return DECODE_STR
-  }}catch(e){
+    let HASH_ = await digestMessage(JSON.stringify(HASH_ARR))
+    console.log(DECODE_STR,HASH_)
+    let BEGIN = HASH_.substring(1,7)
+    let END = HASH_.substring(HASH_.length-7,HASH_.length-1)
+    console.log(BEGIN,_BEGIN,END,_END)
+    if(BEGIN==_BEGIN && END == _END){
+      return DECODE_STR
+    }
+  }catch(e){
     return creatMessage(2,'解密函数运行失败！'+new String(e));
   }
-  return creatMessage(2,'解析失败！，可能原因：密码错误或加密文本损坏');
+  return creatMessage(2,'解析失败！可能原因：密码错误或加密文本损坏'+HASH_);
 }
