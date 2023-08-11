@@ -2,6 +2,7 @@
   <div>
     <h1>维护中（其实是没啥写的，</h1>
     <h2>此页面是如何运行的?</h2>
+    <h2>纯受搓，没用任何第三方UI框架</h2>
     <a href="https://github.com/RainyDreams/RainyDreams">https://github.com/RainyDreams/RainyDreams</a>
   </div>
 </template>
