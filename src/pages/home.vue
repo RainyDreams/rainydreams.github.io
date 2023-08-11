@@ -4,6 +4,8 @@
     <h2>此页面是如何运行的?</h2>
     <h2>纯手搓，没用任何第三方UI框架</h2>
     <a href="https://github.com/RainyDreams/RainyDreams">github.com/RainyDreams/RainyDreams</a>
+    <br>
+    <router-link to="code">加密解密</router-link>
   </div>
 </template>
 

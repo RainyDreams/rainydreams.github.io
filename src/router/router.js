@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '../pages/home.vue'
+import Code from '../pages/code.vue'
 
 const list = [
   {
@@ -7,6 +8,12 @@ const list = [
     name: 'Home',
     component: Home,
     meta: { title: 'RainyDreams\'s Personal Website' }
+  },
+  {
+    path: '/code',
+    name: 'Code',
+    component: Code,
+    meta: { title: '加密解密' }
   },
 ]
 const router = new createRouter({
