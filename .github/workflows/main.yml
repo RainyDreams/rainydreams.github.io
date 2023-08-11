@@ -1,53 +1,33 @@
-# CI name , it will display on github's action page menu
-name: web deploy by ftp
-# trigger on which this CI should be run
+name: 构建页面
 on:
-  push: 
-    # here since my repository branch is named `main` , you should follow your own repository like `master`
-    branches: [main] 
-# CI enviroment settings
-env:
-  NODE_VERSION: "10.x" # custom arg of node.js's version
+  push:  # 指定触发事件
+    branches:
+      - main  # 指定触发 action 的分支
+
 jobs:
-  build:
-    name: 构建,发布
-    runs-on: ubuntu-latest # use latest ubuntu to run the job
+  main:
+    runs-on: ubuntu-latest
     steps:
-      # here are some step followed , each step must have `uses` or `run` key , for CI to run
-      # other key like `name`,`with`,`env` is optional
-      - uses: actions/checkout@v2
-        name: 初始化 checkout
-      # Runs a single command using the runners shell
-      - name: 测试ci单行
-        run: echo Hello, world!
 
-      # Runs a set of commands using the runners shell
-      - name: 测试ci多行
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-      - name: 使用 Node.js ${{ env.NODE_VERSION }} 构建包
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-      - name: 构建执行
-        run: |
+    # 拉取github仓库代码
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+
+    # 执行依赖安装
+    - name: 安装依赖
+      run: |
           npm install
-          npm run lint
-          npm run build:stage
-      # i use `SamKirkland/FTP-Deploy-Action@4.0.0` for ftp deploy
-      # you can referer to github.com/SamKirkland/FTP-Deploy-Action for more infomation
-      - name: 静态发布到ftp
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
-        with:
-          # `${{arg}}` is a template from which you set in `secrets` menu
-          # as `yml` file is follow .git upload to github ,`secrets` is to prevent your sensitive infomation from exposed to public
-          server: ${{ secrets.FTP_HOST }}  
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./dist/
-          server-dir: /kitsune/
-
-      - name: 完成
-        run: echo deploy by ftp
-
+        
+    # 执行构建步骤
+    - name: 构建
+      run: |
+          npm run build
+    # 执行部署
+    - name: 部署
+      uses: easingthemes/ssh-deploy@v2.1.5
+      with:
+        SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }} # 指定密钥，key即密钥名称
+        ARGS: '-rltgoDzvO --delete'
+        TARGET: /root/my-repo # 打包后的 build 文件夹将放在 /root/my-repo
