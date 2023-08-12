@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'mxfont','Source Han Sans',Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -12,6 +12,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+@font-face {
+  font-family: 'mxfont';
+  src: url(./assets/mona-sans.woff);
 }
 *{
   box-sizing: border-box;
@@ -451,4 +455,19 @@ button {
   color:#333;
   z-index: 10000000;
   box-shadow: 0 2px 12px 0 var(--Shadow), 0 12px 14px 0 var(--Shadow);
+}
+
+.MsmallAlert{
+  margin-bottom:20px;
+  padding: 0 16px;
+  font-weight: 700;
+}
+.MsmallAlert._warning{
+  color:#ffc107
+}
+.MsmallAlert._fail{
+  color:#dc3545
+}
+.MsmallAlert._success{
+  color:#198754
 }

@@ -9,10 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "jsonp": "^0.2.1",
     "less": "^4.1.3",
     "sass": "^1.65.1",
     "scss": "^0.2.4",
     "vue": "^3.3.4",
+    "vue-jsonp": "^2.0.0",
     "vue-router": "^4.2.4"
   },
   "devDependencies": {

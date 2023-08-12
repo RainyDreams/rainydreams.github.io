@@ -1,7 +1,8 @@
 <script setup>
 import {decode,encode} from "../utils/czigpswd";
 import {ref,onMounted} from "vue";
-import {setupMessageService} from "../utils/message";
+import {MessageService} from "../utils/message";
+import jsonp from '../utils/jsonp'
 const input1 = ref('')
 const pwd1 = ref('')
 const input2 = ref('')
@@ -10,87 +11,179 @@ const output1 = ref('')
 const output2 = ref('')
 const v1 = ref('')
 const v2 = ref('')
+
+const v3 = ref()
+const output3 = ref()
+
+
+const j1 = ref()
+const j2 = ref()
 const msgElement = ref()
-let msg = {}
-let alert = new Function()
+let msg = null;
 onMounted(()=>{
-  msg = setupMessageService(msgElement);
-  console.log(msg)
-  msg.then(e=>{alert = e})
+  msg = new MessageService(msgElement);
+
+  jsonp('https://apis.map.qq.com/ws/location/v1/ip?key=L66BZ-OHFCU-DVZVU-BNPTD-KPAF5-CCFPO&output=jsonp').then((e)=>{
+    console.log(e)
+    if(e.result){
+      output3.value = 
+      `IP:${e.result.ip}
+      Location:${e.result.ad_info.province + e.result.ad_info.city + e.result.ad_info.district}
+      Detail:${e.result.location.lat + ',' + e.result.location.lng}`
+      
+      // setTimeout(function(){
+      //   var location = encodeURI(e.result.location.lat + ',' + e.result.location.lng)
+      //   var url = 'https://apis.map.qq.com/ws/geocoder/v1/?location='+location+'&key=L66BZ-OHFCU-DVZVU-BNPTD-KPAF5-CCFPO&get_poi=1&output=jsonp'
+      //   jsonp(url).then((e)=>{
+      //     output3.value += e.result.formatted_addresses.standard_address
+      //     console.log(e.result.formatted_addresses.standard_address)
+      //   })
+      // },300)
+    }
+  })
+  // jsonp('https://apis.map.qq.com/ws/geocoder/v1/',
+  // {
+  //   location:'39.984154,116.307490',
+  //   key:'L66BZ-OHFCU-DVZVU-BNPTD-KPAF5-CCFPO',
+  //   output:'jsonp'
+  // },{}
+  // ).then((e)=>{
+  //       console.log(e)
+  //     })
+  // msg.smallAlert({
+  //   ref:j1,
+  //   time:4000,
+  //   fn:()=>{
+  //     msg.alert()
+  //   }
+  // }).catch((e)=>{
+  //   console.log(e)
+  // })
 })
 const doEncode = () => {
   if(!input1.value){
-    return alert(null,'你还没有输入内容',false)
+    return msg.smallAlert({ref:j1,text:'你还没有输入内容',type:'warning'})
   }
-   
   encode(input1.value,pwd1.value).then((res)=>{
+    if(typeof res == 'object'){
+      return msg.smallAlert(res)
+    }
     output1.value = res
   })
 }
 const doDecode = () => {
   if(!input2.value){
-    return alert(null,'你还没有输入内容',false)
+    return msg.smallAlert({ref:j2,text:'你还没有输入内容',type:'warning'})
   }
    
   decode(input2.value,pwd2.value).then((res)=>{
     console.log(res)
     if(typeof res == 'object'){
-      return alert(null,res.message,false)
+      return msg.smallAlert(res)
     }
     output2.value = res
   })
+}
+function isWeChat(){
+  var ua = window.navigator.userAgent.toLowerCase();
+  if(ua.match(/MicroMessenger/i) == 'micromessenger') return true;
+  return false;
 }
 
 const copyPwd = (e)=>{
   var elem = e==1?v1.value:v2.value;
   var text = e==1?output1.value:output2.value;
-  console.log(elem)
+  var j = e==1?j1:j2
+  // console.log(elem)
   if(!text){
-    return alert(null,'复制内容为空',false)
+    msg.smallAlert({
+      ref:j,
+      text:'无内容',
+      type:'warning'
+    })
+    return 0;
   }
-  if (navigator.clipboard && window.isSecureContext) {
+  if (!isWeChat() && navigator.clipboard && window.isSecureContext) {
     navigator.clipboard.writeText(text).then(function() {
-      console.log("复制成功")
-      alert(null,'复制成功',false)
+      // console.log("复制成功")
+      msg.smallAlert({
+        ref:j,
+        text:'复制成功',
+        type:'success'
+      })
     }, function() {
-      console.log("复制失败")
-      alert('通过"navigator.clipboard"API','复制失败',false)
-    });
+      // console.log("复制失败")
+      // msg.smallAlert('通过"navigator.clipboard"API','复制失败',false)
+      try{
+        elem.focus()
+        elem.select()
+        document.execCommand('copy');   // 触发复制事件
+        // document.execCommand("unselect", "false", null) // 取消选取区域
+        msg.smallAlert({
+          ref:j,
+          text:'复制成功',
+          type:'success'
+        })
+      }catch(e){
+        msg.smallAlert({
+          ref:j,
+          text:`复制失败<br/>原因:${e}`,
+          type:'fail'
+        })
+      }
+      });
   }else{
     // document.execCommand 已被弃用，所以首选 navigator.clipboard
     try{
-      var range
-      if (document.body.createTextRange) {
-          range = document.body.createTextRange();
-          range.moveToElementText(elem);
-          range.select();
-      } else if (window.getSelection) {
-          var selection = window.getSelection();
-          range = document.createRange();
-          range.selectNodeContents(elem); // 创建选取内容范围
-          selection.removeAllRanges();  // 清除已选择的内容
-          selection.addRange(range);   // 添加选取内容，模拟用户选取
-          /*if(selection.setBaseAndExtent){
-              selection.setBaseAndExtent(text, 0, text, 1);
-          }*/
-      } else {
-          console.warn("none");
+        elem.focus()
+        elem.select()
+        document.execCommand('copy');   // 触发复制事件
+        // document.execCommand("unselect", "false", null) // 取消选取区域
+        msg.smallAlert({
+          ref:j,
+          text:'复制成功',
+          type:'success'
+        })
+      }catch(e){
+        msg.smallAlert({
+          ref:j,
+          text:`复制失败<br/>原因:${e}`,
+          type:'fail'
+        })
       }
-      document.execCommand('copy');   // 触发复制事件
-      document.execCommand("unselect", "false", null) // 取消选取区域
-      alert(null,'复制成功',false)
-    }catch(e){
-      alert("通过\"document.execCommand\"API",'复制失败',false)
-    }
   }
 }
-
+      // if (document.body.createTextRange) {
+      //     range = document.body.createTextRange();
+      //     range.moveToElementText(elem);
+      //     range.select();
+      // } else if (window.getSelection) {
+      //     var selection = window.getSelection();
+      //     range = document.createRange();
+      //     range.selectNodeContents(elem); // 创建选取内容范围
+      //     selection.removeAllRanges();  // 清除已选择的内容
+      //     selection.addRange(range);   // 添加选取内容，模拟用户选取
+      //     /*if(selection.setBaseAndExtent){
+      //         selection.setBaseAndExtent(text, 0, text, 1);
+      //     }*/
+      // } else {
+      //     console.warn("none");
+      // }
 </script>
 
 <template>
+  <div>
 <div class="MessageService" ref="msgElement"></div>
-
 <div class="pwd-input">
+  <div class="pwd-input-title">
+    <span>位置信息</span>
+    <div class="pwd-input-smallTitle">Location API</div>
+    <div class="pwd-input-smallTitle">您不必开启位置权限，只需要链接WIFI或移动数据</div>
+  </div>
+  <div class="pwd-input-item">
+    <pre v-html="output3"></pre>
+  </div>
+
   <div class="pwd-input-title">
     <span>加密</span>
     <div class="pwd-input-smallTitle">采用CZIG加密技术</div>
@@ -104,7 +197,7 @@ const copyPwd = (e)=>{
     <div class="pwd-input-item-label">密码</div>
     <input class="pwd-input-item-input" placeholder="可选" type="text" v-model="pwd1"/>
   </div>
-  <button class="pwd-input-btn" @click="doEncode()">加密</button>
+  <button class="pwd-input-btn" @click="doEncode()" ref="j1">加密</button>
   <div class="pwd-input-item">
     <input class="pwd-copyarea" type="text" placeholder="输出" readonly ref="v1" v-model="output1"/>
     <button class="pwd-copybutton" @click="copyPwd(1)">复制</button>
@@ -119,14 +212,14 @@ const copyPwd = (e)=>{
     <div class="pwd-input-item-label">密码</div>
     <input class="pwd-input-item-input" placeholder="可选" type="text" v-model="pwd2"/>
   </div>
-  <button class="pwd-input-btn" @click="doDecode()">解密</button>
+  <button class="pwd-input-btn" @click="doDecode()" ref="j2">解密</button>
   <div class="pwd-input-item">
     <input class="pwd-copyarea" type="text" placeholder="输出" readonly ref="v2" v-model="output2"/>
     <button class="pwd-copybutton" @click="copyPwd(2)">复制</button>
   </div>
 
 </div>
-
+</div>
 </template>
   
 <style>
@@ -149,7 +242,7 @@ body{
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 50px;
+  min-height: 50px;
   margin-bottom: 20px;
 }
 .pwd-input-item-label {
@@ -171,6 +264,7 @@ body{
   background: #fff;
   padding:0 16px;
   outline: none;
+  min-height: 40px;
   box-shadow:inset 10px 10px 20px -18px #0005
 }
 .pwd-input-btn{
@@ -196,6 +290,7 @@ body{
   background: #fff;
   padding:0 16px;
   outline: none;
+  min-height: 40px;
   box-shadow:inset 10px 10px 20px -18px #0005;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
