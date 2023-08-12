@@ -11,7 +11,7 @@ async function digestMessage(message) {
   const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); // convert bytes to hex string
   return hashHex;
 }
-const PUBLIC_KEY = 'h728-s$d@e569^q!w4r3b*z0';
+const PUBLIC_KEY = 'h728-s$d@e569   ^q!w4r3b*z0';
 const PUBLIC_KEY_DECODE = 'p?:@5{,lHm=>Afy)\u007f<z;j2\x828'
 import { weBtoa, weAtob } from './jwt';
 function creatMessage(i,e){
