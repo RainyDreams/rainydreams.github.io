@@ -23,13 +23,13 @@ const showMenu = ref(false)
           <div :class="{ 'mobile': true, show: showMenu }">
             <div class="navList">
               <div class="navItem">
-                <router-link to="">首页</router-link>
+                <router-link to="/">首页</router-link>
               </div>
               <div class="navItem">
-                <router-link to="">简介</router-link>
+                <router-link to="/introduce">简介</router-link>
               </div>
               <div class="navItem">
-                <router-link to="">致谢</router-link>
+                <router-link to="/thanks">致谢</router-link>
               </div>
             </div>
           </div>

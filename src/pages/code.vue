@@ -54,7 +54,7 @@ const copyPwd = (e)=>{
       alert(null,'复制成功',false)
     }, function() {
       console.log("复制失败")
-      alert(null,'复制失败',false)
+      alert('通过"navigator.clipboard"API','复制失败',false)
     });
   }else{
     // document.execCommand 已被弃用，所以首选 navigator.clipboard
@@ -80,7 +80,7 @@ const copyPwd = (e)=>{
       document.execCommand("unselect", "false", null) // 取消选取区域
       alert(null,'复制成功',false)
     }catch(e){
-      alert(null,'复制失败',false)
+      alert("通过\"document.execCommand\"API",'复制失败',false)
     }
   }
 }

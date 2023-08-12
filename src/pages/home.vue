@@ -1,11 +1,16 @@
 <template>
-  <div>
-    <h1>维护中（其实是没啥写的，</h1>
-    <h2>此页面是如何运行的?</h2>
-    <h2>纯手搓，没用任何第三方UI框架</h2>
-    <a href="https://github.com/RainyDreams/RainyDreams">github.com/RainyDreams/RainyDreams</a>
-    <br>
-    <router-link to="code">加密解密</router-link>
+  <div class="content">
+    <div class="container">
+      <h1>Hello,</h1>
+      <h2>My name is RainyDreams.</h2>
+      <p>I am a high school student, currently studying in Chifeng No. 2 Middle School. I am a lover of information technology and a beginner.</p>
+      <p>If you are an electronic enthusiast like me, please follow me on <a href="https://github.com/RainyDreams">GitHub.</a></p>
+      <p>In addition to completing academic tasks and programming, I also like calligraphy, painting and classical music</p>
+      <p>If you want to know more about me, please move to the <router-link to="/introduce">Introduction Page</router-link></p>
+      <h2>TOOLS</h2>
+      <p>Here are some gadgets I made to practice my trivial technique</p>
+      <p><router-link to="/tools">Go To Experience</router-link></p>
+    </div>
   </div>
 </template>
 

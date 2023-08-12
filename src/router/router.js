@@ -1,7 +1,11 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '../pages/home.vue'
-import Code from '../pages/code.vue'
+import Tools from '../pages/tools.vue'
+import About from '../pages/about.vue'
+import Introduce from '../pages/introduce.vue'
+import Thanks from '../pages/thanks.vue'
 
+import Code from '../pages/code.vue'
 const list = [
   {
     path: '/',
@@ -10,11 +14,36 @@ const list = [
     meta: { title: 'RainyDreams\'s Personal Website' }
   },
   {
-    path: '/code',
+    path: '/tools',
+    name: 'Tools',
+    component: Tools,
+    meta: { title: '加密解密' }
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About,
+    meta: { title: '加密解密' }
+  },
+  {
+    path: '/introduce',
+    name: 'Introduce',
+    component: Introduce,
+    meta: { title: '加密解密' }
+  },
+  {
+    path: '/thanks',
+    name: 'Thanks',
+    component: Thanks,
+    meta: { title: '加密解密' }
+  },
+
+  {
+    path: '/tools/code',
     name: 'Code',
     component: Code,
     meta: { title: '加密解密' }
-  },
+  }
 ]
 const router = new createRouter({
   //hash

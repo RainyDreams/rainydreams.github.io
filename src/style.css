@@ -41,8 +41,16 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 3.4em;
   line-height: 1.1;
+}
+h2 {
+  font-size: 2.7em;
+  line-height: 1.1;
+}
+p{
+  font-size: 1.2em;
+  line-height: 1.4;
 }
 
 button {
@@ -195,6 +203,72 @@ html.dark {
   --bdsearch: #0085ff;
   --bguser: rgba(0, 0, 0, 0.5);
   --userli: rgba(51, 54, 57, 0.33);
+}
+
+
+/* Content Css */
+.content .container {
+  width: 94%;
+  margin: 0 auto;
+  padding: 0 10px;
+  min-height: 2px;
+}
+
+.row.home-wrap>div[class] {
+  padding:0 0 0 0;
+  margin-bottom: 20px;
+}
+
+.row.home-wrap>div[class]:last-child {
+  margin-bottom: 0px;
+}
+
+@media (min-width:150px) {
+  content .container {
+    width: 94%;
+  }
+}
+
+@media (min-width:768px) {
+  .content .container {
+    width: 760px ;
+  }
+
+  .content-box.home-big-swiper .content-box-box {
+    height: 450px !important;
+  }
+}
+
+@media (min-width:992px) {
+  .content .container {
+    width: 980px ;
+  }
+  .row.home-wrap>div[class] {
+    padding-left: 0px;
+    padding-right: 15px;
+  }
+  
+  .row.home-wrap>div[class]:last-child {
+    padding: 0;
+  }
+}
+
+@media (min-width:1200px) and (max-width: 1439px) {
+  .content .container {
+    width: 1188px ;
+  }
+  .content-box.home-big-swiper .content-box-box {
+    height: 600px !important;
+  }
+}
+
+@media (min-width: 1440px){
+  .content .container {
+    width: 1400px ;
+  }
+  .content-box.home-big-swiper .content-box-box {
+    height: 620PX !important;
+  }
 }
 
 
