@@ -4,7 +4,8 @@
 */
 'use strict'
 const Version = '0.1.2'
-const CHANGSHU = 7
+const CREAT_TIME = 1691845375123
+const CHANGSHU = (new Date().getTime() - CREAT_TIME)%(3*60*1000)
 async function digestMessage(message) { 
   const msgUint8 = new TextEncoder().encode(message);                           // encode as (utf-8) Uint8Array
   const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);           // hash the message
@@ -12,13 +13,23 @@ async function digestMessage(message) {
   const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); // convert bytes to hex string
   return hashHex;
 }
+function DoPass(e){
+  let  DECODE_STR = ''
+  for (let i=0; i < e.length; i++) {
+    let tmp = (e.substring(i, i+1).codePointAt() +CHANGSHU)
+    DECODE_STR += ""+String.fromCharCode( tmp )
+  }
+  return DECODE_STR
+}
 const PUBLIC_KEY = 'h728-s$d@e569^q!w4r3b*z0';
-const PUBLIC_KEY_DECODE = 'p?:@5{,lHm=>Afy)\u007f<z;j2\x828'
+// const PUBLIC_KEY_DECODE = 'p?:@5{,lHm=>Afy)\u007f<z;j2\x828'
+const PUBLIC_KEY_DECODE = DoPass(PUBLIC_KEY )
 import { weBtoa, weAtob } from './jwt';
-function creatMessage(i,e){
+function creatMessage(i,e,t){
   return {
     type:['default','warning','fail','break'][i],
-    message:e
+    text:e,
+    time:t
   }
 }
 function Encode64(str) {
@@ -31,14 +42,6 @@ function Decode64(str) {
   return decodeURIComponent(weAtob(str).split('').map(function (c) {
       return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
   }).join(''));
-}
-function DoPass(e){
-  let  DECODE_STR = ''
-  for (let i=0; i < e.length; i++) {
-    let tmp = (e.substring(i, i+1).codePointAt() +CHANGSHU)
-    DECODE_STR += ""+String.fromCharCode( tmp )
-  }
-  return DECODE_STR
 }
 function ra(count){
   var str="a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0,1,2,3,4,5,6,7,8,9";
@@ -75,7 +78,7 @@ export async function encode(text,password = PUBLIC_KEY){
     // 加密逻辑
     // 谨慎修改逻辑，容易死循环
     let ENCODE_ = HASH_.substring(1,7);
-    if(password.length%2 !==0) return console.warn('请输入偶数位')
+    // if(password.length%2 !==0) return creatMessage(2,'请输入偶数位')
     for (let i=0,p=0; i < (
       /*(password.length>STRING_META_ARRAY.length-1)?
       password.length:*/STRING_META_ARRAY.length-1
@@ -103,7 +106,6 @@ export async function encode(text,password = PUBLIC_KEY){
 
 export async function decode(text,password){
   try{
-    console.log('[Decode Start]')
     text = Decode64(text.replaceAll('_','='));
     console.log(text,password)
     if(typeof password !== 'string' || !password) password = PUBLIC_KEY_DECODE;else password = DoPass(password);
@@ -131,7 +133,11 @@ export async function decode(text,password){
     if(BEGIN==_BEGIN && END == _END){
       return DECODE_STR
     } else {
-      return creatMessage(2,'错误！'+JSON.stringify([BEGIN,_BEGIN,END,_END]));
+      return creatMessage(2,'解密失败！'+JSON.stringify([BEGIN,_BEGIN,END,_END])+'<br/>'+
+      `${text},${HASH_}`
+      +'<br/><a href="#/tools/codeHelp">查看可能原因</a>',40000,()=>{
+
+      });
     }
   }catch(e){
     return creatMessage(2,'解密函数运行失败！'+new String(e));

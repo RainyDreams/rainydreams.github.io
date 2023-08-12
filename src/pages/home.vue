@@ -3,7 +3,7 @@
     <div class="container">
       <h1>Hello,</h1>
       <h2>My name is RainyDreams.</h2>
-      <p>I am a high school student, currently studying in Chifeng No. 2 Middle School. I am a lover of information technology and a beginner.</p>
+      <p>I am a high school student, currently studying in <a href="http://cf2z.cn/">Chifeng No. 2 Middle School</a>. I am a lover of information technology and a beginner.</p>
       <p>If you are an electronic enthusiast like me, please follow me on <a href="https://github.com/RainyDreams">GitHub.</a></p>
       <p>In addition to completing academic tasks and programming, I also like calligraphy, painting and classical music</p>
       <p>If you want to know more about me, please move to the <router-link to="/introduce">Introduction Page</router-link></p>

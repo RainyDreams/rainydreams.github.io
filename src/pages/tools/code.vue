@@ -1,8 +1,8 @@
 <script setup>
-import {decode,encode} from "../utils/czigpswd";
+import {decode,encode} from "../../utils/czigpswd";
 import {ref,onMounted} from "vue";
-import {MessageService} from "../utils/message";
-import jsonp from '../utils/jsonp'
+import {MessageService} from "../../utils/message";
+import jsonp from '../../utils/jsonp'
 const input1 = ref('')
 const pwd1 = ref('')
 const input2 = ref('')
@@ -66,7 +66,7 @@ const doEncode = () => {
   }
   encode(input1.value,pwd1.value).then((res)=>{
     if(typeof res == 'object'){
-      return msg.smallAlert(res)
+      return msg.smallAlert({ref:j1,...res})
     }
     output1.value = res
   })
@@ -77,11 +77,13 @@ const doDecode = () => {
   }
    
   decode(input2.value,pwd2.value).then((res)=>{
-    console.log(res)
+    // console.log(res)
     if(typeof res == 'object'){
-      return msg.smallAlert(res)
+      return msg.smallAlert({ref:j2,...res})
     }
     output2.value = res
+  }).catch(e=>{
+    console.log(e)
   })
 }
 function isWeChat(){
@@ -153,73 +155,63 @@ const copyPwd = (e)=>{
       }
   }
 }
-      // if (document.body.createTextRange) {
-      //     range = document.body.createTextRange();
-      //     range.moveToElementText(elem);
-      //     range.select();
-      // } else if (window.getSelection) {
-      //     var selection = window.getSelection();
-      //     range = document.createRange();
-      //     range.selectNodeContents(elem); // 创建选取内容范围
-      //     selection.removeAllRanges();  // 清除已选择的内容
-      //     selection.addRange(range);   // 添加选取内容，模拟用户选取
-      //     /*if(selection.setBaseAndExtent){
-      //         selection.setBaseAndExtent(text, 0, text, 1);
-      //     }*/
-      // } else {
-      //     console.warn("none");
-      // }
 </script>
 
 <template>
   <div>
-<div class="MessageService" ref="msgElement"></div>
-<div class="pwd-input">
-  <div class="pwd-input-title">
-    <span>位置信息</span>
-    <div class="pwd-input-smallTitle">Location API</div>
-    <div class="pwd-input-smallTitle">您不必开启位置权限，只需要链接WIFI或移动数据</div>
-  </div>
-  <div class="pwd-input-item">
-    <pre v-html="output3"></pre>
-  </div>
+    <div class="MessageService" ref="msgElement"></div>
+    <div class="pwd-input">
+      <div class="pwd-input-title">
+        <span>位置信息</span>
+        <div class="pwd-input-smallTitle">Location API</div>
+        <div class="pwd-input-smallTitle">您不必开启位置权限，只需要链接WIFI或移动数据</div>
+      </div>
+      <div class="pwd-input-item">
+        <pre v-html="output3"></pre>
+      </div>
 
-  <div class="pwd-input-title">
-    <span>加密</span>
-    <div class="pwd-input-smallTitle">采用CZIG加密技术</div>
-  </div>
-  
-  <div class="pwd-input-item">
-    <div class="pwd-input-item-label">输入</div>
-    <input class="pwd-input-item-input" type="text" v-model="input1"/>
-  </div>
-  <div class="pwd-input-item">
-    <div class="pwd-input-item-label">密码</div>
-    <input class="pwd-input-item-input" placeholder="可选" type="text" v-model="pwd1"/>
-  </div>
-  <button class="pwd-input-btn" @click="doEncode()" ref="j1">加密</button>
-  <div class="pwd-input-item">
-    <input class="pwd-copyarea" type="text" placeholder="输出" readonly ref="v1" v-model="output1"/>
-    <button class="pwd-copybutton" @click="copyPwd(1)">复制</button>
-  </div>
+      <div class="pwd-input-title">
+        <span>加密</span>
+        <div class="pwd-input-smallTitle">采用CZIG加密技术</div>
+      </div>
+      
+      <div class="pwd-input-item">
+        <div class="pwd-input-item-label">输入</div>
+        <input class="pwd-input-item-input" type="text" v-model="input1"/>
+      </div>
+      <div class="pwd-input-item">
+        <div class="pwd-input-item-label">密码</div>
+        <input class="pwd-input-item-input" placeholder="可选默认使用公钥加密" type="text" v-model="pwd1"/>
+      </div>
+      <button class="pwd-input-btn" @click="doEncode()" ref="j1">加密</button>
+      <div class="pwd-input-item">
+        <input class="pwd-copyarea" type="text" placeholder="输出" readonly ref="v1" v-model="output1"/>
+        <button class="pwd-copybutton" @click="copyPwd(1)">复制</button>
+      </div>
 
-  <div class="pwd-input-title">解密</div>
-  <div class="pwd-input-item">
-    <div class="pwd-input-item-label">输入</div>
-    <input class="pwd-input-item-input" type="text" v-model="input2"/>
-  </div>
-  <div class="pwd-input-item">
-    <div class="pwd-input-item-label">密码</div>
-    <input class="pwd-input-item-input" placeholder="可选" type="text" v-model="pwd2"/>
-  </div>
-  <button class="pwd-input-btn" @click="doDecode()" ref="j2">解密</button>
-  <div class="pwd-input-item">
-    <input class="pwd-copyarea" type="text" placeholder="输出" readonly ref="v2" v-model="output2"/>
-    <button class="pwd-copybutton" @click="copyPwd(2)">复制</button>
-  </div>
+      <div class="pwd-input-title">
+        <span>解密</span>
+        <div class="pwd-input-smallTitle">仅可以解密近3分钟的内容</div>
+      </div>
+      
+      <div class="pwd-input-item">
+        <div class="pwd-input-item-label">输入</div>
+        <input class="pwd-input-item-input" type="text" v-model="input2"/>
+      </div>
+      <div class="pwd-input-item">
+        <div class="pwd-input-item-label">密码</div>
+        <input class="pwd-input-item-input" placeholder="可选" type="text" v-model="pwd2"/>
+      </div>
+      <button class="pwd-input-btn" @click="doDecode()" ref="j2">解密</button>
+      <div class="pwd-input-item">
+        <input class="pwd-copyarea" type="text" placeholder="输出" readonly ref="v2" v-model="output2"/>
+        <button class="pwd-copybutton" @click="copyPwd(2)">复制</button>
+      </div>
 
-</div>
-</div>
+      <div>声明: 您使用此网站即代表同意<router-link to="/userlicense">赤子英金用户服务协议</router-link></div>
+
+    </div>
+  </div>
 </template>
   
 <style>

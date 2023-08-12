@@ -50,6 +50,10 @@ export class MessageService {
     }
     let conf = {...ObjDefault,...obj}
     if(!conf.ref) throw 'error'
+    console.log('[MxMessageService]',{
+      type:'smallAlert',
+      conf
+    })
     let msgId = 'MM'+this.getRandomString(11)
     if(conf.ref.value.attributes.mxId){
       let lastId = this.smList[conf.ref.value.attributes.mxId]
@@ -77,6 +81,6 @@ export class MessageService {
         _this.smList[conf.ref.value.attributes.mxId] = null
       }
       Promise.resolve()
-    },conf.time)
+    },conf.time=30000)
   }
 }
