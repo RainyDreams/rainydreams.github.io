@@ -4,6 +4,7 @@
 */
 'use strict'
 const Version = '0.1.2'
+const CHANGSHU = 7
 async function digestMessage(message) { 
   const msgUint8 = new TextEncoder().encode(message);                           // encode as (utf-8) Uint8Array
   const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);           // hash the message
@@ -11,7 +12,7 @@ async function digestMessage(message) {
   const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); // convert bytes to hex string
   return hashHex;
 }
-const PUBLIC_KEY = 'h728-s$d@e569   ^q!w4r3b*z0';
+const PUBLIC_KEY = 'h728-s$d@e569^q!w4r3b*z0';
 const PUBLIC_KEY_DECODE = 'p?:@5{,lHm=>Afy)\u007f<z;j2\x828'
 import { weBtoa, weAtob } from './jwt';
 function creatMessage(i,e){
@@ -34,7 +35,7 @@ function Decode64(str) {
 function DoPass(e){
   let  DECODE_STR = ''
   for (let i=0; i < e.length; i++) {
-    let tmp = (e.substring(i, i+1).codePointAt() +8)
+    let tmp = (e.substring(i, i+1).codePointAt() +CHANGSHU)
     DECODE_STR += ""+String.fromCharCode( tmp )
   }
   return DECODE_STR
@@ -80,7 +81,7 @@ export async function encode(text,password = PUBLIC_KEY){
       password.length:*/STRING_META_ARRAY.length-1
     ); i+=1,p+=1) {
       ENCODE_+="_"+(STRING_META_ARRAY[i+1]+password.substring(p, p+1)
-      .codePointAt()+8).toString(16);
+      .codePointAt()+ CHANGSHU ).toString(16);
       if(p==password.length-1){
         p=-1
       }
