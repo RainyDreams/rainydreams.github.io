@@ -28,6 +28,7 @@ import { weBtoa, weAtob } from './jwt';
 function creatMessage(i,e,t){
   return {
     type:['default','warning','fail','break'][i],
+    title:'提示 - 加密解密',
     text:e,
     time:t
   }

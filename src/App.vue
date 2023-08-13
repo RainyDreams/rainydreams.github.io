@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import Footer from './components/footer.vue'
+import Mfooter from './components/mfooter.vue'
 const showMenu = ref(false)
 
 </script>
@@ -38,7 +38,7 @@ const showMenu = ref(false)
       <div class="navBackground"></div>
     </div>
     <router-view class="router-view"></router-view>
-    <Footer></Footer>
+    <Mfooter></Mfooter>
   </div>
 </template>
 
