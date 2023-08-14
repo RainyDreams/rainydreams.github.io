@@ -24,23 +24,20 @@ let msg;
 
 onMounted(()=>{
   msg = new MessageService(message);
-  msg.alert()
   // message.value = {}
-  // msg.smallAlert({
-  //   text: '请输入密码',
-  //   time: 2000
-  // }).catch((...args)=>{
-  //   console.log(...args)
-  // })
   jsonp('https://apis.map.qq.com/ws/location/v1/ip?key=L66BZ-OHFCU-DVZVU-BNPTD-KPAF5-CCFPO&output=jsonp').then((e)=>{
     if(e.result){
-      output3.value = 
-      `IP:${e.result.ip}
+      output3.value = `
+      IP:${e.result.ip}
       Location:${e.result.ad_info.province + e.result.ad_info.city + e.result.ad_info.district}
       Detail:${e.result.location.lat + ',' + e.result.location.lng}`
+    } else {
+      output3.value = `获取失败，未使用安全域？
+或您正在使用本地域名
+请访问<a href="https://RainyDreams.github.io/RainyDreams/">https://RainyDreams.github.io/RainyDreams/</a>`
     }
   }).catch(e=>{
-    output3.value = `获取失败`
+    output3.value = `获取失败，网络错误`
   })
 })
 const doEncode = () => {
@@ -50,8 +47,12 @@ const doEncode = () => {
   encode(input1.value,pwd1.value).then((res)=>{
     if(typeof res == 'object'){
       return msg.smallAlert({...res})
+    } else {
+      msg.smallAlert({title:'加密成功',text:'请复制'})
     }
     output1.value = res
+  }).catch(e=>{
+    output1.value = `获取失败，系统错误`+e
   })
 }
 const doDecode = () => {
@@ -60,13 +61,15 @@ const doDecode = () => {
   }
    
   decode(input2.value,pwd2.value).then((res)=>{
-    // console.log(res)
     if(typeof res == 'object'){
       return msg.smallAlert({...res})
+    }else{
+      msg.smallAlert({title:'解密成功',text:'请复制'})
+
     }
     output2.value = res
   }).catch(e=>{
-    console.log(e)
+    output1.value = `获取失败，网络错误`+e
   })
 }
 function isWeChat(){

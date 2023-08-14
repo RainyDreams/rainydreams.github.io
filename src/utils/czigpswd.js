@@ -25,12 +25,13 @@ const PUBLIC_KEY = 'h728-s$d@e569^q!w4r3b*z0';
 // const PUBLIC_KEY_DECODE = 'p?:@5{,lHm=>Afy)\u007f<z;j2\x828'
 const PUBLIC_KEY_DECODE = DoPass(PUBLIC_KEY )
 import { weBtoa, weAtob } from './jwt';
-function creatMessage(i,e,t){
+function creatMessage(i,e,t,...args){
   return {
     type:['default','warning','fail','break'][i],
     title:'提示 - 加密解密',
     text:e,
-    time:t
+    time:t,
+    ...args
   }
 }
 function Encode64(str) {
@@ -137,7 +138,6 @@ export async function decode(text,password){
       return creatMessage(2,'解密失败！'+JSON.stringify([BEGIN,_BEGIN,END,_END])+'<br/>'+
       `${text},${HASH_}`
       +'<br/><a href="#/tools/codeHelp">查看可能原因</a>',40000,()=>{
-
       });
     }
   }catch(e){

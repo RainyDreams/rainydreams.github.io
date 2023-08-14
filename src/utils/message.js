@@ -1,4 +1,5 @@
 import { ref,watch } from "vue"
+import '../styles/message.scss' 
 
 export class MessageService {
   constructor(refr) {
@@ -14,8 +15,27 @@ export class MessageService {
       msgType:'console',
       value:'helloworld'
     }
-    
-    // console.log(refr.value,this)
+    let _this = this
+
+    class Scheduler {
+      constructor(max){
+        this.max = max;this.count = 0 ;this.queue = new Array();
+      }
+      async add(promiseCreator){
+        if(this.count>=this.max) await new Promise((resolve,reject)=>this.queue.push(resolve));   
+        this.count ++;let res = await promiseCreator();this.count--;
+        if(this.queue.length){this.queue.shift()();}
+        return res;
+      }
+    }
+    const doTask = fn => new Promise(resolve => {
+      _this.ref.value=fn;
+      resolve()
+    })
+    this.scheduler = new Scheduler(1);
+    this.addTask = (prFn,order) => {
+      _this.scheduler.add(() => doTask(prFn)).then(()=>console.log(order))
+    }
   }
   getRandomString(len) {
     len = len || 32;
@@ -42,14 +62,14 @@ export class MessageService {
       ...obj
     }
     var id = 'MD'+this.getRandomString(11)
-    // console.log(this.data)
-    this.ref.value={
+    this.addTask({
       msgType:'alert',
       value:{
         ...conf,
         id
-      }
-    }
+      },
+      msgId:id
+    })
   }
   
 
