@@ -38,7 +38,7 @@ const showMenu = ref(false)
       <div class="navBackground"></div>
     </div>
     <router-view class="router-view"></router-view>
-    <Mfooter></Mfooter>
+    <Mfooter style="overflow-y: hidden;"></Mfooter>
   </div>
 </template>
 
@@ -67,14 +67,9 @@ export default {
   z-index: 2;
   width:100%;
   border-bottom: 1px solid #e5e5e5;
-  .container,.navList{
+  .navList,.container{
     display: flex;
     height:100%;
-  }
-  .container{
-    padding:0 12px;
-    justify-content: space-between;
-    align-items: center;
   }
   .navLogo{
     display: flex;
@@ -146,10 +141,6 @@ export default {
   .nav{
     padding: 0 32px;
     border-bottom:1px solid #ededed;
-    .container{
-      border:0;
-      justify-content: space-between;
-    }
     .mobileButton{
       display: none;
     }
@@ -206,10 +197,6 @@ export default {
     .container,.navList{
       display: flex;
       height:100%;
-    }
-    .container{
-      max-width: 1024px;
-      width: 100%;
     }
     .navItem > *{
       height:100%;

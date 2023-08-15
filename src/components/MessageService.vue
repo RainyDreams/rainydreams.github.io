@@ -109,7 +109,7 @@ const Fn_SmallMessage = {
       setTimeout(()=>{
         addTask(function (resolve){
           let i = findbyid(List_SmallMessage.value,e)?.index
-          List_SmallMessage.value.splice(i,1)
+          // List_SmallMessage.value.splice(i,1)
           resolve()
         })
       },500)
@@ -172,17 +172,19 @@ watch(
 
     <!-- SmallMessage功能 -->
     <template v-for="(conf,i) in List_SmallMessage" :key="conf.id">
-      <div :class="['mx-smallAlert',conf.hide?'hide':'',conf.type,(List_SmallMessage.length-i)>6?'forcehide':'']" 
+      <div :class="['mx-smallAlert',conf.hide?'hide':'',conf.type,
+                    ,(List_SmallMessage.length-i==1)?'show':'behined']" 
          :id="conf.id"
-         :style="{marginTop:((List_SmallMessage.length-i)*6)+'px',
-                  transform:'scale('+(0.9+0.1*(i/(List_SmallMessage.length-1))||1).toFixed(2)+') !important'}">
-        <div class="mx-msg__content" >
+         :style="{marginTop:((List_SmallMessage.length-i)*6)+'px',}"
+         :data-transform="(List_SmallMessage.length-i==1)?'':'scale('+(0.9+0.1*(i/(List_SmallMessage.length-1))||1).toFixed(2)+') !important'"
+         v-if="(List_SmallMessage.length-i)<=6">
+         <div class="mx-msg__content" v-if="(List_SmallMessage.length-i)<=3">
           <div class="mx-msg__App">
             <div class="mx-msg__App--name">
               {{conf.app.name}}
             </div>
             <div class="mx-msg__time">
-              刚刚
+              刚刚{{ List_SmallMessage.length-i }}
             </div>
           </div>
           <div class="mx-msg__text">

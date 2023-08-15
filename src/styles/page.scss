@@ -1,0 +1,20 @@
+.container{
+  padding:0 12px;
+  justify-content: space-between;
+  align-items: center;
+  // display: flex;
+  height:100%;
+  margin:0 auto;
+}
+@media (min-width: 768px){
+  .container{
+    border:0;
+    justify-content: space-between;
+  }
+}
+@media (min-width: 960px){
+  .container{
+    max-width: 1024px;
+    width: 100%;
+  }
+}

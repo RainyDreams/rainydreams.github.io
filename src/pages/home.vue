@@ -1,5 +1,10 @@
+<script setup>
+import Feature from '../components/feature.vue'
+</script>
+
 <template>
   <div class="content">
+    <Feature></Feature>
     <div class="container">
       <h1>Hello,</h1>
       <h2>My name is RainyDreams.</h2>
@@ -13,9 +18,6 @@
     </div>
   </div>
 </template>
-
-<script>
-</script>
 
 <style>
 body {

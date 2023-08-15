@@ -5,6 +5,7 @@ import App from './App.vue';
 import router from './router/router';
 import {install} from '@icon-park/vue-next/es/all';
 import './style.css';
+import './styles/page.scss';
 // import './styles/message.scss';
 const app = createApp(App);
 install(app); 
