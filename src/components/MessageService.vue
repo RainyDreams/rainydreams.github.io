@@ -109,7 +109,7 @@ const Fn_SmallMessage = {
       setTimeout(()=>{
         addTask(function (resolve){
           let i = findbyid(List_SmallMessage.value,e)?.index
-          // List_SmallMessage.value.splice(i,1)
+          List_SmallMessage.value.splice(i,1)
           resolve()
         })
       },500)
@@ -135,13 +135,14 @@ watch(
     List_Alert.value.push(newVal.value)
   } else if(newVal?.msgType === "small"){
     let msg = newVal.value
+    msg.time = new Date().getTime()
     if(msg.text.length>=25){
-      msg.realText = msg.text
-      msg.text = msg.text.substring(0,20)+"..."
-      msg.more=true
+      msg.realText = msg.text;
+      msg.text = msg.text.substring(0,20)+"...";
+      msg.more=true;
     }
     List_SmallMessage.value.push(msg)
-    Fn_SmallMessage.delay(msg?.id,newVal?.value?.time)
+    Fn_SmallMessage.delay(msg?.id,newVal?.value?.delay)
   }
 });
 </script>
@@ -227,10 +228,3 @@ watch(
 
   </div>
 </template>
-
-
-<style>
-
-
-
-</style>

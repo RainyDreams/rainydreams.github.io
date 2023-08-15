@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import Mfooter from './components/mfooter.vue'
+import {MessageForApp} from './utils/message'
 const showMenu = ref(false)
 
 </script>
@@ -13,11 +14,16 @@ const showMenu = ref(false)
             <img src="./assets/logo_cn_en.svg" alt="赤子英金">
             <p>RainyDreams</p>
           </div>
-          <div :class="{'mobileButton':true, show:showMenu}" @click="showMenu=!showMenu">
-            <div class="box">
-              <div class="line"></div>
-              <div class="line"></div>
-              <div class="line"></div>
+          <div class="buttonList">
+            <div :class="{'mobileButton':true, show:showMenu}" style="padding: 8px;justify-content: center;align-items: center;" @click="openMessageList">
+              <icon-remind theme="outline" size="19" fill="#444"/>
+            </div>
+            <div :class="{'mobileButton':true, show:showMenu}" style="padding: 13px 12px;" @click="showMenu=!showMenu">
+              <div class="box">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+              </div>
             </div>
           </div>
           <div :class="{ 'mobile': true, show: showMenu }">
@@ -85,9 +91,15 @@ export default {
       height:25px;
     }
   }
+  .buttonList{
+    display: flex;
+    height:100%;
+    align-items: center;
+  }
   .mobileButton{
     width:40px;
     height:40px;
+    font-size: 0;
   }
   .mobile{
     position: absolute;
@@ -220,7 +232,7 @@ export default {
 .mobileButton{
   display: flex;
   flex-direction: column;
-  padding:13px 12px;
+  // padding:13px 12px;
   position: relative;
   .box{
     width:18px;
@@ -232,7 +244,7 @@ export default {
     position: absolute;
     width: 18px;
     height: 2px;
-    background: #555;
+    background: #444;
     transition: top .25s,background-color .25s,transform .25s
     ,border .25s,opacity .25s;
   }

@@ -12,7 +12,7 @@ const output1 = ref('')
 const output2 = ref('')
 const v1 = ref('')
 const v2 = ref('')
-
+// debug()
 // const v3 = ref()
 const output3 = ref()
 // const j1 = ref()
@@ -39,6 +39,7 @@ onMounted(()=>{
   }).catch(e=>{
     output3.value = `获取失败，网络错误`
   })
+
 })
 const doEncode = () => {
   if(!input1.value){
@@ -113,6 +114,7 @@ const copyPwd = (e)=>{
           text:`复制失败<br/>原因:${e}`,
           type:'fail'
         })
+
       }
       });
   }else{
@@ -134,6 +136,9 @@ const copyPwd = (e)=>{
       }
   }
 }
+
+
+
 </script>
 
 <template>

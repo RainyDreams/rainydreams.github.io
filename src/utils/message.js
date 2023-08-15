@@ -79,7 +79,7 @@ export class MessageService {
     var ObjDefault = {
       appId:'MAI-fieUv67UBYHow',
       type:'default',
-      time:4000,
+      delay:4000,
       title:"提示",
       text:'无提示内容',
       fn:()=>{}
