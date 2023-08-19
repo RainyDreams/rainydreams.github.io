@@ -1,8 +1,9 @@
 <script setup>
-import { toRefs, defineProps, watch, ref } from "vue";
+import { toRefs, defineProps, watch, ref, getCurrentInstance  } from "vue";
 const props = defineProps({
   message: Object,
 });
+const { proxy } = getCurrentInstance()
 const { message } = toRefs(props);
 const msgElement = ref()
 const WindowWidth = ref(window.innerWidth)
@@ -96,7 +97,7 @@ const Fn_SmallMessage = {
   //延迟
   delay(e,t){
     let _this=this
-    if(!t) t=4000
+    if(!t) t=6000
     setTimeout(()=>{
       _this.default(e)
     },t)
@@ -143,8 +144,17 @@ watch(
     }
     List_SmallMessage.value.push(msg)
     Fn_SmallMessage.delay(msg?.id,newVal?.value?.delay)
+    proxy.$addMessage("msg",msg).then(e=>{
+
+    })
+  } else {
+
   }
+  
+
 });
+
+
 </script>
 
 <template>
@@ -176,9 +186,9 @@ watch(
       <div :class="['mx-smallAlert',conf.hide?'hide':'',conf.type,
                     ,(List_SmallMessage.length-i==1)?'show':'behined']" 
          :id="conf.id"
-         :style="{marginTop:((List_SmallMessage.length-i)*6)+'px',}"
+         :style="{marginTop:((List_SmallMessage.length-i)*8)+'px',}"
          :data-transform="(List_SmallMessage.length-i==1)?'':'scale('+(0.9+0.1*(i/(List_SmallMessage.length-1))||1).toFixed(2)+') !important'"
-         v-if="(List_SmallMessage.length-i)<=6">
+         v-if="(List_SmallMessage.length-i)<=3">
          <div class="mx-msg__content" v-if="(List_SmallMessage.length-i)<=3">
           <div class="mx-msg__App">
             <div class="mx-msg__App--name">

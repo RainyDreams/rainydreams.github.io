@@ -1,6 +1,82 @@
-import { ref,watch } from "vue"
-import '../styles/message.scss' 
+/*
+  * @param {E} 
+*/
 
+
+import { ref,watch,} from "vue"
+import '../styles/message.scss' 
+export var MessageForApp = function(){
+
+}
+/**
+ * 
+ * @param {Number} time1 
+ * @param {Number} time2 
+ * @param {"string" | "time"} type 
+ * @returns
+ */
+export function getFriendlyTime(time1, time2 = new Date(), type = "string") {
+  const now = time2;
+  const inputTime1 = time1;
+  const inputTime2 = time2;
+  const diff = now - inputTime1;
+  const hours = Math.floor(diff / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+  if (type === "string") {
+    if (hours === 0) {
+      if (minutes === 0) {
+        return `${seconds}秒前`;
+      } else if (minutes === 1) {
+        return `${minutes}分钟前`;
+      } else {
+        return `${minutes}分钟前`;
+      }
+    } else if (hours === 1) {
+      return `一小时前`;
+    } else {
+      return `${hours}小时前`;
+    }
+  } else {
+    return diff;
+  }
+}
+ 
+
+export function addMessage (key, newVal) {
+  //注意categoryNum为要监听的属性，实际开发中请自行修改
+  if (key == 'msg') {
+    // 创建一个StorageEvent事件
+    var newStorageEvent = document.createEvent('StorageEvent');
+    function addMessage (k, val) {
+      if(typeof val != 'object') throw new Error('Not AN OBJECT')
+      let old = JSON.parse(sessionStorage.getItem(k) || '[]');
+      old.push(val);
+      let arr = []
+      old.forEach(item=>{
+        if(item.read != true) arr.push(item)
+      })
+      sessionStorage.setItem(k, JSON.stringify(old));
+      sessionStorage.setItem('msg_unread',arr.length);
+      newStorageEvent.initStorageEvent('changeMessage', false, false, k, null, val, null, null); 
+      window.dispatchEvent(newStorageEvent)
+    }
+    return new Promise((resolve, reject) => {
+      if (newVal) {
+        addMessage(key, newVal)
+        resolve(newVal)
+      } else {
+        reject(new Error('Not AN OBJECT'))
+      }
+    });
+  }
+}
+
+/**
+ * @description 消息处理函数
+ * @export
+ * @class MessageService
+ */
 export class MessageService {
   constructor(refr) {
     this.alertList = []
@@ -79,7 +155,6 @@ export class MessageService {
     var ObjDefault = {
       appId:'MAI-fieUv67UBYHow',
       type:'default',
-      delay:4000,
       title:"提示",
       text:'无提示内容',
       fn:()=>{}

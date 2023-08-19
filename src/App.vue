@@ -3,7 +3,17 @@ import { ref } from 'vue'
 import Mfooter from './components/mfooter.vue'
 import {MessageForApp} from './utils/message'
 const showMenu = ref(false)
+const showRed = ref(false)
 
+
+window.addEventListener('changeMessage', ()=> {
+  let num = parseInt(sessionStorage.getItem('msg_unread') || 0)
+  if(num > 0){
+    showRed.value = true
+  } else {
+    showRed.value = false
+  }
+})
 </script>
 <template>
   <div>
@@ -16,7 +26,10 @@ const showMenu = ref(false)
           </div>
           <div class="buttonList">
             <div :class="{'mobileButton':true, show:showMenu}" style="padding: 8px;justify-content: center;align-items: center;" @click="openMessageList">
-              <icon-remind theme="outline" size="19" fill="#444"/>
+              <router-link to="/messageList">
+                <icon-remind theme="outline" size="19" fill="#444"/>
+                <div v-show="showRed" class="_red"></div>
+              </router-link>
             </div>
             <div :class="{'mobileButton':true, show:showMenu}" style="padding: 13px 12px;" @click="showMenu=!showMenu">
               <div class="box">
@@ -224,6 +237,16 @@ export default {
       }
     }
   }
+}
+
+._red{
+  position: absolute;
+  top:8px;
+  right:8px;
+  width:5px;
+  height:5px;
+  border-radius: 2.5px;
+  background: red;
 }
 
 

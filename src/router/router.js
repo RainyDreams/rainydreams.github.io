@@ -5,6 +5,7 @@ import About from '../pages/about.vue'
 import Introduce from '../pages/introduce.vue'
 import Thanks from '../pages/thanks.vue'
 import License from '../pages/userlicenseagreement.vue'
+import MessageList from '../pages/messageList.vue'
 
 import ToolsCode from '../pages/tools/code.vue'
 import ToolsCodeHelp from '../pages/tools/codehelp.vue'
@@ -20,7 +21,6 @@ const list = [
     name: 'License',
     component: License,
     meta: { title: 'UserLicenseAgreement' }
-
   },
   {
     path: '/tools',
@@ -45,6 +45,12 @@ const list = [
     name: 'Thanks',
     component: Thanks,
     meta: { title: '致谢' }
+  },
+  {
+    path: '/messageList',
+    name: 'MessageList',
+    component: MessageList,
+    meta: { title: '消息列表' }
   },
 
   {
