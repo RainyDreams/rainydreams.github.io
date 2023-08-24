@@ -2,7 +2,7 @@
 import {ref} from 'vue'
 import {getFriendlyTime} from '../utils/message'
 const messageList = ref([])
-messageList.value=JSON.parse(sessionStorage.getItem('msg'))
+messageList.value=JSON.parse(sessionStorage.getItem('msg') ?? '[]') 
 function compare(property, desc) {
   return function (a, b) {
     let value1 = a[property];

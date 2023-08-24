@@ -1,35 +1,6 @@
 <script setup>
 import {ref} from 'vue'
-const feature = {
-  '纪念日本投降':{
-    id:'MF20230815',
-    startDate:20230815,
-    endDate:20230816,
-    detail:{
-      theme:{
-        background:'#222',
-        color:'#fff'
-      },
-      title:'纪念日本投降',
-      smallTitle:'日本战败投降78周年',
-      detail:'1945年8月15日，日本裕仁天皇通过广播发表《终战诏书》，宣布无条件投降。历史不能被遗忘！ 铭记历史，缅怀先烈，砥砺前行，吾辈自强！'
-    }
-  },
-  '毛泽东逝世纪念日':{
-    id:'MF20230815',
-    startDate:20230908,
-    endDate:20230912,
-    detail:{
-      theme:{
-        background:'rgb(55,50,0)',
-        color:'#fff'
-      },
-      title:'大海航行靠舵手，万物生长靠太阳',
-      smallTitle:'伟大的领袖和导师毛泽东主席逝世47周年纪念日',
-      detail:'1976年9月9日，毛泽东逝世。纪念伟人，最好的方式就是不断学习，不断进步，不断总结，不断提高。'  
-    }
-  },
-}
+import {feature} from '../assets/feature.data'
 function getDate(){
   let date = new Date();
   let y=date.getFullYear();

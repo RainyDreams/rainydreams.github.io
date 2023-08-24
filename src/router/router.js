@@ -9,6 +9,30 @@ import MessageList from '../pages/messageList.vue'
 
 import ToolsCode from '../pages/tools/code.vue'
 import ToolsCodeHelp from '../pages/tools/codehelp.vue'
+
+import Maxims from '../pages/maxims/index.vue'
+const _Tools = [
+  {
+    path: '/tools/code',
+    name: 'Code',
+    component: ToolsCode,
+    meta: { title: '加密解密' }
+  },
+  {
+    path: '/tools/codehelp',
+    name: 'CodeHelp',
+    component: ToolsCodeHelp,
+    meta: { title: '帮助' }
+  }
+]
+const _Maxims = [
+  {
+    path: '/maxims',
+    name: 'Maxims',
+    component: Maxims,
+    meta: { title: 'MAXIMS' }
+  }
+]
 const list = [
   {
     path: '/',
@@ -53,18 +77,8 @@ const list = [
     meta: { title: '消息列表' }
   },
 
-  {
-    path: '/tools/code',
-    name: 'Code',
-    component: ToolsCode,
-    meta: { title: '加密解密' }
-  },
-  {
-    path: '/tools/codehelp',
-    name: 'CodeHelp',
-    component: ToolsCodeHelp,
-    meta: { title: '帮助' }
-  }
+  ..._Tools,
+  ..._Maxims
 ]
 const router = new createRouter({
   //hash
