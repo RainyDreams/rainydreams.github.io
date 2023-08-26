@@ -14,6 +14,10 @@ window.addEventListener('changeMessage', () => {
     showRed.value = false
   }
 })
+
+function close(){
+  showMenu.value = !showMenu.value
+}
 </script>
 
 <template>
@@ -50,19 +54,19 @@ window.addEventListener('changeMessage', () => {
         <div :class="{ mobile: true, show: showMenu }">
           <div class="navList">
             <div class="navItem">
-              <router-link @click="showMenu = !showMenu" to="/">首页</router-link>
+              <router-link @click="close()" to="/">首页</router-link>
             </div>
             <div class="navItem">
-              <router-link @click="showMenu = !showMenu" to="/introduce">简介</router-link>
+              <router-link @click="close()" to="/introduce">简介</router-link>
             </div>
             <div class="navItem">
-              <router-link @click="showMenu = !showMenu" to="/thanks">致谢</router-link>
+              <router-link @click="close()" to="/thanks">致谢</router-link>
             </div>
             <div 
-              class="navItem"
+              class="navItem noMobile"
               v-if="!showMenu"
             >
-              <router-link @click="showMenu = !showMenu" to="/messageList">
+              <router-link @click="close()" to="/messageList">
                 <!-- <icon-remind theme="outline" size="19" fill="#444" /> -->
                 <span>通知</span>
                 <div v-show="showRed" class="_red"></div>
@@ -172,8 +176,14 @@ window.addEventListener('changeMessage', () => {
   backdrop-filter: saturate(50%) blur(8px);
   background: rgba(255,255,255,.8);
 }
+@media (max-width: 767px){
+  .noMobile{
+    display: none;
+  }
+}
 //平板电脑
 @media (min-width: 768px){
+  
   .nav{
     padding: 0 32px;
     border-bottom:1px solid #ededed;
