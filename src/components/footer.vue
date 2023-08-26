@@ -31,6 +31,7 @@ let color = ref([])
               <li><icon-weibo size="24" :fill="color[3] ?? '#5f6464'" @mouseover="color[3]='#ff8200'" @mouseleave="color[3]=null"/></li>
             </ul>
           </div>
+          <div class="privite">此页面使用Google Analytics和百度统计功能来分析用户行为，详见 <router-link to="/cookie">Cookie和隐私</router-link> </div>
           <div class="copyright">Copyright © 2021 - 2023 ChiziIngiin & Zhang.. All Rights Reserved.</div>
         </div>
       </div>
@@ -74,8 +75,8 @@ li {
   align-items: flex-start;
   padding-bottom: 33px;
 }
-.copyright{
-  padding-top: 26px;
+.container > *{
+  padding-top: 8px;
   font-size: 13px;
   color:#555;
 }

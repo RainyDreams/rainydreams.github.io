@@ -4,8 +4,11 @@ import Tools from '../pages/tools.vue'
 import About from '../pages/about.vue'
 import Introduce from '../pages/introduce.vue'
 import Thanks from '../pages/thanks.vue'
-import License from '../pages/userlicenseagreement.vue'
 import MessageList from '../pages/messageList.vue'
+
+import License from '../pages/license/userlicenseagreement.vue'
+import Cookie from '../pages/license/cookie.vue'
+
 
 import ToolsCode from '../pages/tools/code.vue'
 import ToolsCodeHelp from '../pages/tools/codehelp.vue'
@@ -33,18 +36,26 @@ const _Maxims = [
     meta: { title: 'MAXIMS' }
   }
 ]
+const _License = [
+  {
+    path:"/userlicense",
+    name: 'License',
+    component: License,
+    meta: { title: 'UserLicenseAgreement' }
+  },
+  {
+    path:"/cookie",
+    name: 'Cookie and Private',
+    component: Cookie,
+    meta: { title: 'Cookie & Private' }
+  },
+]
 const list = [
   {
     path: '/',
     name: 'Home',
     component: Home,
     meta: { title: 'RainyDreams\'s Personal Website' }
-  },
-  {
-    path:"/userlicense",
-    name: 'License',
-    component: License,
-    meta: { title: 'UserLicenseAgreement' }
   },
   {
     path: '/tools',
@@ -76,7 +87,7 @@ const list = [
     component: MessageList,
     meta: { title: '消息列表' }
   },
-
+  ..._License,
   ..._Tools,
   ..._Maxims
 ]

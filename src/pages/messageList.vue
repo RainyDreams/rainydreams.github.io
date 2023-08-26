@@ -32,6 +32,7 @@ function readAll(){
 </script>
 <template >
   <div class="container">
+    <p>[!]此页面为实验性页面</p>
     <button @click="readAll()">全部已读</button>
         <!-- SmallMessage功能 -->
     <template v-for="(conf,i) in messageList" :key="conf.id">
