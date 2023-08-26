@@ -198,10 +198,8 @@ const copyPwd = (e)=>{
   </div>
 </template>
   
-<style>
-body{
-  background: #f0f3f6;
-}
+<style scoped>
+
 .pwd-input{
   display: flex;
   flex-direction: column;

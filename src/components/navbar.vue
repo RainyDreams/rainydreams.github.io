@@ -64,7 +64,6 @@ function close(){
             </div>
             <div 
               class="navItem noMobile"
-              v-if="!showMenu"
             >
               <router-link @click="close()" to="/messageList">
                 <!-- <icon-remind theme="outline" size="19" fill="#444" /> -->
@@ -322,6 +321,15 @@ function close(){
   .line:nth-child(3){
     top: 6px;
     transform: translate(0) rotate(135deg);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .navBackground{
+    background: rgba(32, 32, 32, 0.8);
+  }
+  .navItem > *{
+    color:#fffd !important
   }
 }
 </style>
