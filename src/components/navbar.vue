@@ -50,18 +50,19 @@ window.addEventListener('changeMessage', () => {
         <div :class="{ mobile: true, show: showMenu }">
           <div class="navList">
             <div class="navItem">
-              <router-link to="/">首页</router-link>
+              <router-link @click="showMenu = !showMenu" to="/">首页</router-link>
             </div>
             <div class="navItem">
-              <router-link to="/introduce">简介</router-link>
+              <router-link @click="showMenu = !showMenu" to="/introduce">简介</router-link>
             </div>
             <div class="navItem">
-              <router-link to="/thanks">致谢</router-link>
+              <router-link @click="showMenu = !showMenu" to="/thanks">致谢</router-link>
             </div>
-            <div
-              :class="{ navItem: true, hide: !showMenu }"
+            <div 
+              class="navItem"
+              v-if="!showMenu"
             >
-              <router-link to="/messageList">
+              <router-link @click="showMenu = !showMenu" to="/messageList">
                 <!-- <icon-remind theme="outline" size="19" fill="#444" /> -->
                 <span>通知</span>
                 <div v-show="showRed" class="_red"></div>
