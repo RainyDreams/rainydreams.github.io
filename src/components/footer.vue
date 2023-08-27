@@ -9,7 +9,7 @@ var octo = new Octokat({
 });
 
 var cb = function (err, val) {
-  console.log("🚀 ~ file: footer.vue:12 ~ cb ~ val:", val)
+  // console.log("🚀 ~ file: footer.vue:12 ~ cb ~ val:", val)
   // console.log(val)
 
   if (!val) {
@@ -18,10 +18,10 @@ var cb = function (err, val) {
     return err;
   }
 
-  let pages = val.deployments.read().then(e=>{
-    console.log(e);
-  })
-  console.log("🚀 ~ file: footer.vue:22 ~ cb ~ pages:", pages)
+  // let pages = val.deployments.read().then(e=>{
+  //   console.log(e);
+  // })
+  // console.log("🚀 ~ file: footer.vue:22 ~ cb ~ pages:", pages)
 
   
 

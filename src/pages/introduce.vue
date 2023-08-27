@@ -1,8 +1,6 @@
 <template>
-  <div class="content">
-    <div class="container">
-      <h1>The road is still going, and is blocked and long</h1>
-    </div>
+  <div class="container content">
+    <h1 big>The road is still going, and is blocked and long</h1>
   </div>
 </template>
 

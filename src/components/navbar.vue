@@ -115,6 +115,8 @@ function close(){
       padding-left:8px;
       font-size: 15px;
       font-weight: bold;
+      margin:0;
+
     }
     img{
       height:25px;
@@ -232,6 +234,7 @@ function close(){
         padding-left:16px;
         font-size: 18px;
         font-weight: bold;
+        margin:0;
       }
       img{
         height:30px;
@@ -257,6 +260,7 @@ function close(){
       p{
         padding-left:18px;
         font-size: 18px;
+        margin:0;
       }
       img{
         height:30px;

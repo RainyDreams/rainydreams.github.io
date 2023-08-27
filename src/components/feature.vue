@@ -24,7 +24,7 @@ for(let i in feature){
   <div>
     <template v-for="(t,i) in FeatureList" :key="i">
       <div :id="t.id" class="feature" :style="t.theme">
-        <div class="container" style="position: relative;">
+        <div class="container content" style="position: relative;">
           <div class="activeId">{{ `${today}#${i+1}` }}</div>
           <div class="feature-body">
             <div class="feature-title" v-html="t.title"></div>
