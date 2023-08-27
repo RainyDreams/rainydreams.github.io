@@ -1,7 +1,7 @@
 <script setup>
 import MFooter from './components/footer.vue'
 import MNavBar from './components/navbar.vue'
-import RunCode from './components/runCode.vue'
+import RunCode from './components/silentRunCode.vue'
 </script>
 <template>
   <div>

@@ -15,6 +15,6 @@
 </script>
 <script>
 export default {
-  name: "MRuncode",
+  name: "Runcode",
 };
 </script>
