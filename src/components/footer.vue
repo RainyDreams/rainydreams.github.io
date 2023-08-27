@@ -5,42 +5,39 @@ import { getFriendlyTime } from "../utils/base";
 const color = ref([]);
 const Update = ref({});
 
-var octo = new Octokat({});
+var octo = new Octokat({
+});
+
 var cb = function (err, val) {
+  console.log("🚀 ~ file: footer.vue:12 ~ cb ~ val:", val)
   // console.log(val)
+
   if (!val) {
     Update.value.time = "";
     Update.value.message = "获取失败";
     return err;
   }
-  val.commits
-    .read()
-    .then((e) => {
-      // console.log(e.items);
-      // let u = []
-      // e.items.forEach(e=>{
-      //   u.push({
-      //     author: e.commit.author.name,
-      //     date: e.commit.author.date,
-      //     message: e.commit.message
-      //   })
-      // })
-      // console.log(u)
-      // console.log("sus");
-      // console.log(e.items[0]);
-      Update.value.time = getFriendlyTime(e.items[0].commit.author.date);
-      Update.value.url = e.items[0].html.url;
-      Update.value.message = e.items[0].commit.message;
-    })
-    .catch((e) => {
-      Update.value.time = "";
-      Update.value.message = "获取失败";
-    });
+
+  let pages = val.deployments.read().then(e=>{
+    console.log(e);
+  })
+  console.log("🚀 ~ file: footer.vue:22 ~ cb ~ pages:", pages)
+
+  
+
+  val.commits.read()
+  .then((e) => {
+    Update.value.time = getFriendlyTime(e.items[0].commit.author.date);
+    Update.value.url = e.items[0].html.url;
+    Update.value.message = e.items[0].commit.message;
+  })
+  .catch((e) => {
+    Update.value.time = "";
+    Update.value.message = "获取失败";
+  });
 };
 
-// octo.zen.read(cb)
-  octo.repos("RainyDreams", "RainyDreams").fetch(cb);
-
+octo.repos("RainyDreams", "RainyDreams").fetch(cb);
 </script>
 
 <template>

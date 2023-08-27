@@ -13,3 +13,8 @@
 //   console.warn(e);
 // }
 </script>
+<script>
+export default {
+  name: "MRuncode",
+};
+</script>
