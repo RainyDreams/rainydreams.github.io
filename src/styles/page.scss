@@ -778,3 +778,22 @@ a > code {
 ::-webkit-scrollbar-thumb{
   background-color: #8884;
 }
+
+#nprogress .bar {
+	background: #2243ff !important; // 自定义颜色
+	height: 4px !important; // 自定义高度
+  box-shadow: none;
+}
+#nprogress .bar .peg{
+  display: none;
+}
+#nprogress .spinner{
+  left:0;
+  right:0;
+  width: fit-content;
+  margin:auto;
+}
+#nprogress .spinner-icon{
+  border-top-color: #2243ff !important;
+  border-left-color: #2243ff !important
+}

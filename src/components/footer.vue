@@ -10,11 +10,11 @@ var octo = new Octokat({
 
 var cb = function (err, val) {
   // console.log("🚀 ~ file: footer.vue:12 ~ cb ~ val:", val)
-  // console.log(val)
+  console.log(val)
 
   if (!val) {
     Update.value.time = "";
-    Update.value.message = "获取失败";
+    Update.value.message = "获取失败1";
     return err;
   }
 
@@ -27,13 +27,14 @@ var cb = function (err, val) {
 
   val.commits.read()
   .then((e) => {
-    Update.value.time = getFriendlyTime(e.items[0].commit.author.date);
-    Update.value.url = e.items[0].html.url;
-    Update.value.message = e.items[0].commit.message;
+    let arr = JSON.parse(e)
+    Update.value.time = getFriendlyTime(arr[0].commit.author.date);
+    Update.value.url = arr[0].html_url;
+    Update.value.message = arr[0].commit.message;
   })
   .catch((e) => {
     Update.value.time = "";
-    Update.value.message = "获取失败";
+    Update.value.message = "获取失败2"+e;
   });
 };
 

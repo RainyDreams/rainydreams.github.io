@@ -12,7 +12,7 @@ const router = new createRouter({
 
 NProgress.configure({  
   easing: 'ease-out', // 动画方式 
-  speed: 500, // 递增进度条的速度 
+  speed: 200, // 递增进度条的速度 
   showSpinner: false, // 是否显示加载ico 
   trickleSpeed: 200, // 自动递增间隔 
   minimum: 0.1, // 初始化时的最小百分比
@@ -22,6 +22,11 @@ NProgress.configure({
 router.beforeEach((to,from, next) => {
   //进度条开始
   // console.log(from)
+  // console.log(to,from)
+  if(to.matched.length === 0){
+    next({name:'ERROR404',params:{to:encodeURIComponent(to.fullPath)}})
+    return
+  }
   document.title = to.meta.title || 'RainyDreams'
   NProgress.start();
   //随机增加进度

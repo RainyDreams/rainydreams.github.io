@@ -5,6 +5,8 @@ import Introduce from '../pages/introduce.vue'
 import Thanks from '../pages/thanks.vue'
 import MessageList from '../pages/messageList.vue'
 
+import ERROR404 from '../pages/errors/404.vue'
+
 import Document from '../pages/document.vue'
 
 import License from '../pages/license/userlicenseagreement.vue'
@@ -49,6 +51,14 @@ const _License = [
     name: 'Cookie and Private',
     component: Cookie,
     meta: { title: 'Cookie & Private' }
+  },
+]
+const _Errors = [
+  {
+    path: '/error/404/:to',
+    name: 'ERROR404',
+    component: ERROR404,
+    meta: { title: '404 NOT FOUND' }
   },
 ]
 const list = [
@@ -110,7 +120,7 @@ const list = [
     meta: { title: '' }
   },
   
-
+  ..._Errors,
   ..._License,
   ..._Tools,
   ..._Maxims
