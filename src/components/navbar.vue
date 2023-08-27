@@ -80,7 +80,13 @@ function close(){
 </template>
 
 <style lang="scss" scoped>
-
+*{
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+}
 .navbar{
   width: 100%;
   position: fixed;

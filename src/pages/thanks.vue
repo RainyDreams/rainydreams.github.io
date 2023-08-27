@@ -8,7 +8,6 @@
         <li>开源软件或工具
           <ul>
             <li>Microsoft VSCode</li>
-            <li>Vue</li>
             <li>Vite</li>
             <li>Scss</li>
             <li>GitHub</li>
@@ -16,6 +15,8 @@
             <li>Google Bard</li>
             <li>Microsoft Bing</li>
             <li>Microsoft Copilot</li>
+            <li>Code Geex</li>
+            <li>Google Anlysis</li>
           </ul>
         </li>
       </ul>

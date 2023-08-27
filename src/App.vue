@@ -1,12 +1,14 @@
 <script setup>
 import MFooter from './components/footer.vue'
 import MNavBar from './components/navbar.vue'
+import RunCode from './components/runCode.vue'
 </script>
 <template>
   <div>
     <MNavBar/>
     <router-view class="router-view"></router-view>
-    <MFooter style="overflow-y: hidden;"></MFooter>
+    <MFooter></MFooter>
+    <RunCode/>
   </div>
 </template>
 

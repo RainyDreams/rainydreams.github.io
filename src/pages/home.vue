@@ -17,9 +17,9 @@ import Feature from '../components/feature.vue'
       <p>本网站的作者可能因为学业原因无法及时更新网站</p>
       <p>The author of this website may not be able to update the website in a timely manner due to LearingInSchool reasons</p>
       <hr>
-      <h2>RECENTLY</h2>
+      <!-- <h2>RECENTLY</h2>
       <p>《黄河大合唱》</p>
-      <hr>
+      <hr> -->
       <h2>TOOLS</h2>
       <p>Here are some gadgets I made to practice my trivial technique</p>
       <p><router-link to="/tools">Go To Experience</router-link></p>

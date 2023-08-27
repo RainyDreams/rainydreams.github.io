@@ -1,10 +1,10 @@
 <script setup>
 import {ref} from 'vue';
-function _ChangeColor (e) {
-  // console.dir(...e)
-  console.log(e.currentTarget.dataset)
-}
 let color = ref([])
+const showmplogo = ref(0)
+function showWechat(){
+
+}
 </script>
 
 <template>
@@ -25,9 +25,20 @@ let color = ref([])
               <li>GitHub</li>
               <li>Twitter(X)</li>
               <li></li> -->
-              <li><icon-github-one size="24" :fill="color[0] ?? '#5f6464'" @mouseover="color[0]='#1f2328'" @mouseleave="color[0]=null"/></li>
-              <li><icon-twitter size="24" :fill="color[1] ?? '#5f6464'" @mouseover="color[1]='#1da1f2'" @mouseleave="color[1]=null"/></li>
-              <li><icon-wechat size="24" :fill="color[2] ?? '#5f6464'" @mouseover="color[2]='#1AAD19'" @mouseleave="color[2]=null"/></li>
+              <li>
+                <a href="//github.com/RainyDreams/" target="_blank">
+                  <icon-github-one size="24" :fill="color[0] ?? '#5f6464'" @mouseover="color[0]='#1f2328'" @mouseleave="color[0]=null"/>
+                </a>
+              </li>
+              <li>
+                <a href="//x.com" target="_blank">
+                  <icon-twitter size="24" :fill="color[1] ?? '#5f6464'" @mouseover="color[1]='#1da1f2'" @mouseleave="color[1]=null"/>
+                </a>
+              </li>
+              <li>
+                <p class="mplogo"><img src="../assets/qrcode_mp.jpg"  alt="加载失败"></p>
+                <icon-wechat size="24" :fill="color[2] ?? '#5f6464'" @mouseover="color[2]='#1AAD19'" @mouseleave="color[2]=null"/>
+              </li>
               <li><icon-weibo size="24" :fill="color[3] ?? '#5f6464'" @mouseover="color[3]='#ff8200'" @mouseleave="color[3]=null"/></li>
             </ul>
           </div>
@@ -46,6 +57,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+*{
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+}
 ul{
   list-style: none;
   display: flex;  
@@ -56,8 +74,10 @@ li {
   display: block;
   margin-right: 28px;
   cursor: pointer;
+  position: relative;
 }
 .footer{
+  padding-top:34px;
   padding-bottom:34px;
 }
 ._title {
@@ -73,11 +93,44 @@ li {
   box-sizing: content-box;
   display: flex;
   align-items: flex-start;
-  padding-bottom: 33px;
+  padding-bottom: 16px;
 }
 .container > *{
   padding-top: 8px;
   font-size: 13px;
   color:#555;
+}
+@media (max-width: 767px){
+  .focus_me{
+    flex-direction: column;
+  }
+  ul{
+    padding:0;
+    padding-top: 16px;
+  }
+}
+
+.mplogo{
+  position:absolute;
+  bottom:40px;
+  z-index: 50;
+  margin:0;
+  padding:0;
+  width:160px;
+  height:160px;
+  border-radius: 16px;
+  box-shadow: 0 0 10px 10px #0001;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+  img{
+    width:100%;
+    height:100%;
+  }
+}
+li:hover .mplogo{
+  opacity: 1;
+  visibility: visible;
 }
 </style>
