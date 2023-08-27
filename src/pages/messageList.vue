@@ -1,6 +1,6 @@
 <script setup>
 import {ref} from 'vue'
-import {getFriendlyTime} from '../utils/message'
+import { getFriendlyTime } from "../utils/base";
 const messageList = ref([])
 messageList.value=JSON.parse(sessionStorage.getItem('msg') ?? '[]') 
 function compare(property, desc) {

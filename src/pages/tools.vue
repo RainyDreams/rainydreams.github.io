@@ -1,92 +1,89 @@
+<script setup>
+import { ref } from "vue";
+const tool_list = ref([]);
+(async () => {
+  tool_list.value = [
+    {
+      name: "code",
+      title: "加密解密",
+      desc: "将字符串按照指定规则加密解密",
+      author: 'Zhang',
+      updateTime: '2023-08-20',
+    }
+  ];
+})();
+</script>
+
 <template>
   <div class="content">
     <div class="container">
-      <div class="tools-view">
-        <router-link to="/tools/code" class="tools-item">
-          <div class="title">czig 加密解密</div>
-          <div class="describe">describe</div>
-          <div class="background">
-            <img src="" alt="" />
-            <div class="masking-out"></div>
+      <div class="tools-view row">
+        <template v-for="(item, i) in tool_list" :key="i">
+          <div class="col-md-4">
+            <router-link :to="`/tools/${item.name}`" class="tools-item">
+              <div class="title">{{ item.title }}</div>
+              <div class="describe">{{ item.desc }}</div>
+              <div class="author">{{ item.author }}</div>
+              <div class="update-time">更新时间：{{ item.updateTime }}</div>
+              <div class="background" v-if="item.img">
+                <img src="" alt="" />
+                <div class="masking-out"></div>
+              </div>
+            </router-link>
           </div>
-        </router-link>
+        </template>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-export default {};
-</script>
-
 <style lang="scss">
+.tools-view {
+}
 .tools-item {
-  width: 150px;
-  height: 150px;
-  opacity: 1;
-  box-shadow: 0px 8px 150px rgba(0, 0, 0, 0.11);
-  position: relative;
-
+  display: block;
+  background: #333;
+  margin-top: 1.5rem;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1rem;
   .title {
-    position: absolute;
-    left: 12px;
-    top: 85px;
-    width: 126px;
-    height: 22px;
-    opacity: 1;
-    /** 文本1 */
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 0px;
-    line-height: 34px;
-    color: rgba(255, 255, 255, 1);
-    text-align: left;
-    vertical-align: middle;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
   }
   .describe {
-    position: absolute;
-
-    left: 12px;
-    top: 110px;
-    width: 126px;
-    height: 28px;
-    opacity: 0.6;
-    /** 文本1 */
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0px;
-    line-height: 14px;
-    color: rgba(255, 255, 255, 1);
-    text-align: left;
-    vertical-align: middle;
+    font-size: .8rem;
+    color: #999;
   }
   .background {
-    left: 0px;
-    top: 0px;
-    width: 150px;
-    height: 150px;
-    opacity: 1;
-    img {
-      position: absolute;
-      left: 51px;
-      top: 10.5px;
-      width: 92px;
-      height: 74px;
-      opacity: 0.61;
-    }
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
     .masking-out {
-      left: 0px;
-      top: 0px;
-      width: 150px;
-      height: 150px;
-      opacity: 1;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.2);
       border-radius: 16px;
-      background: linear-gradient(
-        180deg,
-        rgba(192, 130, 242, 1) 0%,
-        rgba(75, 89, 224, 1) 100%
-      );
     }
+  }
+  .background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+  .author {
+    font-size: .8rem;
+    color: #999;
+  }
+  .update-time {
+    font-size: .8rem;
+    color: #999;
+  }
+  &:hover{
+    box-shadow:0 0 10px #9992;
   }
 }
 </style>
