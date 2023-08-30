@@ -10,7 +10,7 @@ var octo = new Octokat({
 
 var cb = function (err, val) {
   // console.log("🚀 ~ file: footer.vue:12 ~ cb ~ val:", val)
-  console.log(val)
+  // console.log(val)
 
   if (!val) {
     Update.value.time = "";
@@ -127,7 +127,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-* {
+*,:root {
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
