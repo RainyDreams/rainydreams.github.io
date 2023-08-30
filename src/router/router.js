@@ -6,7 +6,7 @@ import list from './router.data.js';
 const router = new createRouter({
   //hash
   mode: 'history',
-  base: process.env.BASE_URL
+  base: process.env.BASE_URL,
   // history: createWebHashHistory(),
   routes: list
 })
