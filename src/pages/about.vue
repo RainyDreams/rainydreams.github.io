@@ -1,5 +1,14 @@
-<script>
-
+<script setup>
+import { onMounted, ref } from "vue";
+import { useRoute } from 'vue-router'
+const route = useRoute();
+const to = ref(route.query?.to);
+console.log(to.value,document.getElementById(to.value))
+onMounted(()=>{
+  setTimeout(()=>{
+    document.getElementById(to.value).scrollIntoView({behavior: "smooth"})
+  },100)
+})
 </script>
 
 <template>
@@ -14,7 +23,7 @@
       <h2>管理人员</h2>
       <p>赤子英金创始人兼总负责人：<a href="">肖遥（笔）</a></p>
       <p>赤子英金创始人兼副总负责人：邬源（笔）</p>
-      <h2>致谢</h2>
+      <h2 id="thanks">致谢</h2>
       <h3>为赤子英金的发展无私奉献的人们(排名不分先后)</h3>
       <p style="display:flex;flex-wrap: wrap;">
         <a class="usernamebox" title=""><img alt="@" src="../assets/header/lxy.jpg"><span>吕雪阳</span></a>

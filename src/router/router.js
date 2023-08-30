@@ -1,13 +1,14 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import NProgress from 'nprogress'
 
 import list from './router.data.js';
 
 const router = new createRouter({
   //hash
-  mode: 'history',
-  base: process.env.BASE_URL,
-  // history: createWebHashHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
+  // mode: 'history',
+  // base: process.env.BASE_URL,
+  // history: createRouter(),
   routes: list
 })
 
@@ -35,12 +36,18 @@ router.beforeEach((to,from, next) => {
   next();
 });
 //后置路由
-router.afterEach((...args) => {
+router.afterEach((to,from,next) => {
   //关闭掉进度条
+  // console.log(to,from)
   NProgress.done();
-  if([...args][1].name){
+  // console.log(!to.query?.to)
+  if(to.query?.to){
+
+  }
+  else if(from.name){
+    // console.log('默认到页面顶端')
     setTimeout(() => {
-      window.scrollTo({top:0,behavior: 'smooth'})
+      window.scrollTo({top:0})
     }, 100)
   }
 });

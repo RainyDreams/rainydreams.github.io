@@ -5,7 +5,7 @@ import TypeIt from 'typeit'
 const text = ref(null)
 const originHtml = ref(null)
 function getString(){
-  console.dir(originHtml.value.innerHTML)
+  // console.dir(originHtml.value.innerHTML)
   return originHtml.value.innerHTML ?? `<h1 class="big">Hello,</h1>
     <h2 class="big">My name is RainyDreams.</h2>
     <p>I am a high school student, currently studying in <a href="http://cf2z.cn/">Chifeng No. 2 High School<icon-arrow-right-up theme="outline" size="16" fill="#646CFF"/></a>. I am a lover of information technology and also a beginner.</p>
