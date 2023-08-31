@@ -37,7 +37,7 @@ onMounted(() => {
       <div class="hidden" style="display: none;" ref="originHtml">
         <h1 class="big">Hello,</h1>
         <h2 class="big">My name is RainyDreams.</h2>
-        <p>I am a high school student, currently studying in <a href="http://cf2z.cn/">Chifeng No.2 High School<icon-arrow-right-up theme="outline" size="16" fill="#646CFF"/></a>. I am a lover of information technology and also a beginner.</p>
+        <p>I am a high school student, currently studying in <a href="http://cf2z.cn/">No.2 Senior School of Chifeng<icon-arrow-right-up theme="outline" size="16" fill="#646CFF"/></a>. I am a lover of information technology and also a beginner.</p>
         <p>If you are an electronic enthusiast like me, please follow me on <a href="https://github.com/RainyDreams">GitHub<icon-arrow-right-up theme="outline" size="16" fill="#646CFF"/></a>.</p>
         <p>In addition to completing academic tasks and programming, I also like calligraphy, painting and classical music.</p>
         <p>If you want to know more about me, please move to the <router-link to="/introduce">Introduction Page</router-link>.</p>

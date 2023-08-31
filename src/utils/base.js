@@ -33,6 +33,16 @@ export function getFriendlyTime(time1, time2 = new Date(), type = "string") {
 }
 
 
+export function getRandomString(len) {
+  len = len || 32;
+  var $chars = 'AmSTnpN5Rz2EcdCKMXZabersYDW4xtwPBFGy36fhHJQijk78'; 
+  var maxPos = $chars.length;
+  var pwd = '';
+  for (let i = 0; i < len; i++) {
+    pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+  } return pwd;
+}
+
 /*! 
  * mx.js v0.2.0.007
  * Author Zhangxinyue etc.

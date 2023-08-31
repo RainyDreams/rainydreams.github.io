@@ -7,7 +7,9 @@ import RunCode from './components/silentRunCode.vue'
   <div>
     <MNavBar/>
     <div class="appview">
-      <router-view class="router-view"></router-view>
+      <Suspense>
+        <router-view class="router-view"></router-view>
+      </Suspense>
     </div>
     <MFooter></MFooter>
     <RunCode/>

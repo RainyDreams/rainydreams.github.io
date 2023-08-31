@@ -98,23 +98,8 @@ const list = [
     component: MessageList,
     meta: { title: '消息列表' }
   },
-
-  {
-    path: '/doc/',
-    name: 'documents',
-    component: Document,
-    meta: { title: '' }
-  },
-
   {
     path: '/doc',
-    name: 'documents',
-    component: Document,
-    meta: { title: '' }
-  },
-
-  {
-    path: '/doc:name',
     name: 'documents',
     component: Document,
     meta: { title: '' }

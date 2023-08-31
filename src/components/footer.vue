@@ -14,7 +14,7 @@ var cb = function (err, val) {
 
   if (!val) {
     Update.value.time = "";
-    Update.value.message = "获取失败1";
+    Update.value.message = "获取失败 0x01";
     return err;
   }
 
@@ -34,7 +34,7 @@ var cb = function (err, val) {
   })
   .catch((e) => {
     Update.value.time = "";
-    Update.value.message = "获取失败2"+e;
+    Update.value.message = "获取失败 0x02"+e;
   });
 };
 

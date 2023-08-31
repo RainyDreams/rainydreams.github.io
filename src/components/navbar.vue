@@ -60,7 +60,10 @@ function close(){
               <router-link @click="close()" to="/introduce">简介</router-link>
             </div>
             <div class="navItem">
-              <router-link @click="close()" to="/about?to=thanks">致谢</router-link>
+              <router-link @click="close()" to="/thanks">致谢</router-link>
+            </div>
+            <div class="navItem">
+              <router-link @click="close()" to="/about">关于</router-link>
             </div>
             <div 
               class="navItem noMobile"

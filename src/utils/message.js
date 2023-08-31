@@ -5,6 +5,7 @@
 
 import { ref,watch,} from "vue"
 import '../styles/message.scss' 
+import { getRandomString } from "./base";
 export var MessageForApp = function(){
 
 }
@@ -80,15 +81,7 @@ export class MessageService {
       _this.scheduler.add(() => doTask(prFn)).then(()=>console.log(order))
     }
   }
-  getRandomString(len) {
-    len = len || 32;
-    var $chars = 'AmSTnpN5Rz2EcdCKMXZabersYDW4xtwPBFGy36fhHJQijk78'; 
-    var maxPos = $chars.length;
-    var pwd = '';
-    for (let i = 0; i < len; i++) {
-      pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
-    } return pwd;
-  }
+  
   getAppInfo(AppId){
     return this.AppInfo[AppId]?this.AppInfo[AppId]:this.AppInfo['MAI-fieUv67UBYHow']
   }
@@ -104,7 +97,7 @@ export class MessageService {
       ...defaultConfig,
       ...obj
     }
-    var id = 'MD'+this.getRandomString(11)
+    var id = 'MD'+getRandomString(11)
     this.addTask({
       msgType:'alert',
       value:{
@@ -132,7 +125,7 @@ export class MessageService {
       type:'smallAlert',
       conf
     })
-    let id = 'MM'+this.getRandomString(11)
+    let id = 'MM'+getRandomString(11)
     this.ref.value={
       msgType:'small',
       value:{

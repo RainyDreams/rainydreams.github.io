@@ -1,14 +1,15 @@
 <script setup>
-import { onMounted, ref } from "vue";
-import { useRoute } from 'vue-router'
-const route = useRoute();
-const to = ref(route.query?.to);
-console.log(to.value,document.getElementById(to.value))
-onMounted(()=>{
-  setTimeout(()=>{
-    document.getElementById(to.value).scrollIntoView({behavior: "smooth"})
-  },100)
-})
+import DocImage from '../components/docImage.vue';
+// import { onMounted, ref } from "vue";
+// import { useRoute } from 'vue-router'
+// const route = useRoute();
+// const to = ref(route.query?.to);
+// console.log(to.value,document.getElementById(to.value))
+// onMounted(()=>{
+//   setTimeout(()=>{
+//     document.getElementById(to.value).scrollIntoView({behavior: "smooth"})
+//   },100)
+// })
 </script>
 
 <template>
@@ -18,8 +19,15 @@ onMounted(()=>{
       <h2>赤子英金是谁？</h2>
       <p>赤子英金是一个由中学生组成的社会性集团，创办于2022年，旨在服务学生群体，分享技术内容，传播社会正能量。赤子英金社区是一个以赤子英金集团为主体面向学生的技术、影视、娱乐社区。目前由 @肖遥 运营。</p>
       <p>赤子英金诞生于美丽的英金河畔，怀着一颗赤子之心，为用户创造更好的产品。</p>
-      <p><img src="../assets/images/ingiinriver.jpg" alt=""></p>
-      <p style="text-align:center;font-size:14px;margin-top:-8px;font-family: Arial, Helvetica, sans-serif;">图 美丽的英金河畔 邬源摄</p>
+      <p><DocImage>
+        <template #image>
+          <img src="../assets/images/ingiinriver.jpg" alt="IngiinRiver">
+        </template>
+        <template #describe>
+          <span>图 美丽的英金河畔 邬源摄</span>
+        </template>
+      </DocImage></p>
+      <p style="text-align:center;font-size:14px;margin-top:-8px;font-family: Arial, Helvetica, sans-serif;"></p>
       <h2>管理人员</h2>
       <p>赤子英金创始人兼总负责人：<a href="">肖遥（笔）</a></p>
       <p>赤子英金创始人兼副总负责人：邬源（笔）</p>
