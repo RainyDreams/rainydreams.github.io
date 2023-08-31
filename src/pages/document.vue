@@ -24,7 +24,7 @@ const markdownBody = ref(null);
 let _find = route.query?.find;
 let _id = route.query?.id;
 if(_find){
-  let arr = JSON.parse(await fetch(`/doc/_data.js`).then(e => e.text()))
+  let arr = JSON.parse(await fetch(`/doc/_data.json`).then(e => e.text()))
   arr.forEach(element => {
     if(element.title == _find){
       _id=element.id
