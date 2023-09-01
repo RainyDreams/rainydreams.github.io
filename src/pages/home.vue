@@ -29,6 +29,7 @@ onMounted(() => {
 
 <template>
   <div class="home">
+    <div class="homeBackground"><img src="../assets/background.svg" alt=""></div>
     <Feature></Feature>
     <div class="container content">
       <div ref="text"></div>
@@ -66,7 +67,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style>
+<style lang="scss">
 body {
   --bd-indigo-rgb: 102, 16, 242;
 }
@@ -86,5 +87,22 @@ body {
   background: #fff;
   /*background-image: linear-gradient(to bottom, rgba(var(--bd-indigo-rgb), 0.62), rgba(var(--bd-indigo-rgb), 0.55));*/
   backdrop-filter: blur(4px);
+}
+.home{
+  position: relative;
+}
+.homeBackground{
+  position: absolute;
+  z-index: -1;
+  width:100%;
+  top:0;
+  left:0;
+  overflow: hidden;
+  img{
+    min-width: 600px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 </style>

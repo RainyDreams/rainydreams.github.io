@@ -24,7 +24,7 @@ const markdownBody = ref(null);
 let _find = route.query?.find;
 let _id = route.query?.id;
 if(_find){
-  let arr = JSON.parse(await fetch(`/doc/_data.json`).then(e => e.text()))
+  let arr = JSON.parse(await fetch(`/documents/_data.json`).then(e => e.text()))
   arr.forEach(element => {
     if(element.title == _find){
       _id=element.id
@@ -37,7 +37,7 @@ if(_find){
 
 
 if (_id) {
-  let text = await fetch(`/doc/${_id}.md`).then(e => e.text())
+  let text = await fetch(`/documents/${_id}.md`).then(e => e.text())
   markdownBody.value = markdown.render(text || '# ID错误')
 } else {
   markdownBody.value = markdown.render(`# 参数错误
