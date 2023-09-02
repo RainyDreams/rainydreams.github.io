@@ -128,6 +128,7 @@ export default {
 
 <style scoped lang="scss">
 *,:root {
+  -webkit-user-drag: none;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;

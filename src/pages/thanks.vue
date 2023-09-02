@@ -9,7 +9,7 @@
         <li>我的家人一直以来对我的支持。</li>
         <li>我的朋友一直以来对我的鼓励。</li>
         <li>开源社区（GitHub）及其开源软件精神</li>
-        <li>开源软件，详见本软件所使用的 <router-link to="/doc?find=开源软件列表">开源软件列表</router-link> </li>
+        <li>开源软件，详见本软件所使用的 <router-link to="/doc?id=QzpKA46YZQaT">开源软件列表</router-link> </li>
       </ul>
       <!-- <h3>特别感谢</h3>
       <ul>

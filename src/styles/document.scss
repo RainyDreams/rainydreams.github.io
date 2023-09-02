@@ -29,6 +29,7 @@
     // margin:auto;
   }
   .usernamebox {
+    -webkit-user-drag: none;
     user-select: none;
     display: inline-flex;
     padding: 0px 4px;

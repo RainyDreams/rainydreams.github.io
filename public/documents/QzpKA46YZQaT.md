@@ -8,7 +8,6 @@
 | nprogress             | 0.2.0   |
 | octokat               | 0.8.0   |
 | sass                  | 1.65.1  |
-| scss                  | 0.2.4   |
 | typeit                | 8.7.1   |
 | vue                   | 3.3.4   |
 | vue-jsonp             | 2.0.0   |

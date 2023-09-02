@@ -49,6 +49,7 @@ for(let i in feature){
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
+  -webkit-user-drag: none;
   text-align: right;
 }
 .feature-body{

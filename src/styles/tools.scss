@@ -1,0 +1,110 @@
+
+.pd-box{
+  min-height: 100px;
+  margin: 0 0px 40px;
+}
+.pd-box>.section{
+  display: block;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px 25px 28px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  transition: all .3s ease-in-out;
+  text-align: center;
+  border:1px solid #ededed;
+  height:100%;
+}
+.pd-box>.section:hover{
+  box-shadow: 0 5px 16px 0 rgb(68 88 144 / 5%);
+}
+.pd-box>.section a[href]:active:hover{
+  -webkit-transform: scale(.95);
+  transform: scale(.95);
+}
+.pd-box .icon{
+  margin: 0 auto 15px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  padding:10px;
+  box-shadow: 0 0 8px 0px rgba(0,0,0,0.05);
+  overflow: hidden;
+  line-height: 50px;
+  vertical-align: middle;
+}
+.pd-box .title{
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+.pd-box .content{
+  font-size: 14px;
+  line-height: 1.6em;
+  margin-bottom: 0;
+  text-align: left;
+  color:#444;
+}
+.pd-box .icon i,.pd-box .icon img{
+  width:100%;
+  font-size: 36px;
+  vertical-align: middle;
+  line-height: 1;
+}
+.pd-box .state{
+  height:28px;
+  padding:0px 8px;
+  border-bottom-left-radius: 10px;
+  font-size: 12px;
+  line-height: 28px;
+  position: absolute;
+  top:0;right:0;
+}
+.pd-box .ctbox{
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  margin-top: 20px;
+}
+.pd-box .ctbox span.ifm{
+  width: 100%;
+  margin-bottom: 8px;
+  color:#222;
+  font-size: 12px;
+  line-height: 1.2em;
+  opacity: 0.8;
+}
+.pd-box .ctbox span.ifm .mxicon{
+  margin-right: 4px;
+  margin-left: 4px;
+}
+.DBC{
+  font-size: 13px;
+  color:var(--ActiveColor);
+  vertical-align: middle;
+  user-select: none;
+  margin: 0 10px 40px;
+}
+.DBC span{
+  border:1px solid var(--BdActiveColor);
+  background-color: var(--BgActiveColor);
+  color:#fff;
+  padding:4px 6px;
+  border-radius: 4px;
+  opacity: 0.86;
+  user-select: none;
+}
+.h-showlr{
+  width:0;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+:hover>.h-showlr{
+  width:auto;
+  width:14px;
+  height: 1.4em;
+}

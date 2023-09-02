@@ -797,3 +797,153 @@ a > code {
   border-top-color: #2243ff !important;
   border-left-color: #2243ff !important
 }
+
+
+.noselect{
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+  -webkit-user-drag: none;
+}
+
+//print
+.printOnly{
+  display: none;
+}
+@media print {
+  .noInPrint {
+    display: none !important;
+  }
+  .printOnly{
+    //默认
+    display:inherit !important;
+  }
+}
+
+
+::selection { 
+  background:#2243ff44; 
+}
+::-moz-selection { 
+  background:#2243ff44; 
+}
+::-webkit-selection { 
+  background:#2243ff44; 
+}
+
+
+/* basic style of mx */
+.btn{
+  cursor: pointer;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  color: rgb(34, 43, 70);
+  border-radius: 8px;
+  padding: 9px 16px;
+  background: rgb(243, 247, 251);
+  transition: all 0.2s ease-in-out;
+  word-break: keep-all;
+  font-size: 13px;
+  line-height: 1.5em;
+  font-family: SourceHanSansCN_Medium;
+  border: 1px solid transparent;
+}
+
+.cle-btn{
+  display: inline-block;
+  background-color: #fff4;
+  border:1px solid #aaa;
+  color: #222;
+  font-size: 15px;
+  height:50px;
+  border-radius: 25px;
+  line-height: 18px;
+  font-family: SourceHanSansCN_Medium;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 16px 24px;
+  transition: all 0.2s ease-in-out;
+  word-break: keep-all;
+}
+.cle-btn:hover{
+  background-color: #bbb4;
+}
+.cle-btn:active{
+  padding: 15px 23px;
+  border: 2px solid  #0f82f7;
+  background-color: #0f82f744;
+}
+
+.cle-btn[sm]{
+  background-color: #0f82f7;
+  color: #fff;
+  font-size: 15px;
+  height:38px;
+  border-radius: 19px;
+  line-height: 1.4em;
+  font-family: SourceHanSansCN_Medium;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 7.5px 16px;
+  transition: all 0.2s ease-in-out;
+  word-break: keep-all;
+}
+
+.btn.light{
+  background: #fff;
+  border-color: #bbb;
+}
+.btn.primary{
+  background: #2ea1ff;
+  border-color: #2ea1ff;
+  color:#fff
+}
+.btn.h-primary:hover{background: #2ea1ff;border-color: #2ea1ff;color:#fff}
+.btn.h-light:hover{
+  background: #fff;
+  border-color: #bbb;
+}
+
+@font-face {        font-family: "mxicon";         font-style: normal;        font-weight: 400;        src: url('../assets/fonts/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2') format('woff2');        font-display: swap;        /* unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; */      }
+
+
+
+.mxicon{
+  display: inline-block;
+  color:inherit;
+  vertical-align: bottom;
+  font-family: 'mxicon';
+  font-size: inherit;
+}
+
+.section-header{
+  margin-top:70px;
+  width:100%;
+}
+.section-header h2{
+  font-size: 36px;
+  color: #0f416a;
+  text-align: center;
+  font-weight: 700;
+  position: relative;
+  font-family: montserrat,sans-serif;
+  margin: 0 0 20px;
+}
+.section-header h3 {
+  text-align: center;
+  margin: auto;
+  font-size: 15px;
+  padding-bottom: 60px;
+  color: #0f416a;
+  width: 80%;
+  letter-spacing: 1px;
+  font-weight: normal;
+  line-height: 20px;
+  opacity: 0.7;
+}

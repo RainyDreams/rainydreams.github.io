@@ -55,7 +55,11 @@ import DocImage from '../components/docImage.vue';
         <li>深圳市腾讯计算机系统有限公司</li>
       </ul>
       <h2>写在后面</h2>
-      <p style="padding:180px 0;line-height:40px;font-size:26px;letter-spacing:4px;font-style:italic;text-align:center;font-family:'Courier New', Courier, monospace">梦想只是开始，探索永不止步</p>
+      <!-- <p style="padding:180px 0;line-height:40px;font-size:26px;letter-spacing:4px;font-style:italic;text-align:center;font-family:'Courier New', Courier, monospace">梦想只是开始，探索永不止步</p> -->
+      <p class="noselect" style="padding:180px 0;
+        font-style:italic;text-align:center;font-family:'Courier New', Courier, monospace">
+        <img src="../assets/font.svg" style="height:30px;" alt="梦想只是开始，探索永不止步">
+      </p>
       <p></p>
       <h2 id="Lianxiwomen">联系我们</h2>
       <!-- <p>本页面已开源在github:<a href="https://github.com/ChiziIngiin-Group/chiziingiin.github.io">ChiziIngiin-Group/chiziingiin.github.io</a></p> -->

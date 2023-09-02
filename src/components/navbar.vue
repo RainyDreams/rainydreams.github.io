@@ -27,10 +27,11 @@ function close(){
         <div class="navLogo">
           <img src="../assets/logo_cn_en.svg" alt="赤子英金" />
           <p>RainyDreams</p>
+          <p class="printOnly" style="display: none;">网站打印模式</p>
         </div>
-        <div class="buttonList">
+        <div class="buttonList noInPrint">
           <div
-            :class="{ mobileButton: true, show: showMenu }"
+            :class="{ mobileButton: true, show: showMenu, noInPrint:true }"
             style="padding: 8px; justify-content: center; align-items: center"
             @click="openMessageList"
           >
@@ -40,7 +41,7 @@ function close(){
             </router-link>
           </div>
           <div
-            :class="{ mobileButton: true, show: showMenu }"
+            :class="{ mobileButton: true, show: showMenu, noInPrint:true }"
             style="padding: 13px 12px"
             @click="showMenu = !showMenu"
           >
@@ -51,7 +52,7 @@ function close(){
             </div>
           </div>
         </div>
-        <div :class="{ mobile: true, show: showMenu }">
+        <div :class="{ mobile: true, show: showMenu,noInPrint:true }">
           <div class="navList">
             <div class="navItem">
               <router-link @click="close()" to="/">首页</router-link>
@@ -80,10 +81,12 @@ function close(){
     </div>
     <div class="navBackground"></div>
   </div>
+  <div class="navbarNm"></div>
 </template>
 
 <style lang="scss" scoped>
 *{
+  -webkit-user-drag: none;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -97,6 +100,18 @@ function close(){
   top: 0;
   z-index: 10;
   display: block;
+}
+.navbarNm{
+  display: none;
+}
+@media print{
+  .navbar{
+    position: fixed;
+  }
+  .navbarNm{
+    display: block;
+    height:56px
+  }
 }
 .nav {
   position: relative;
@@ -247,6 +262,9 @@ function close(){
 }
 //台式电脑
 @media (min-width: 960px){
+  .navbarNm{
+    height:70px;
+  }
   .nav {
     height: 70px;
     display: flex;
@@ -343,6 +361,13 @@ function close(){
   }
   .navItem > *{
     color:#fffd !important
+  }
+}
+
+
+@media print{
+  .container{
+    justify-content: center;
   }
 }
 </style>
