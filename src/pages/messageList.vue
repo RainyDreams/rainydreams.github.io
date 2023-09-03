@@ -31,7 +31,7 @@ function readAll(){
 }
 </script>
 <template >
-  <div class="container">
+  <div class="container content">
     <p>[!]此页面为实验性页面</p>
     <button @click="readAll()">全部已读</button>
         <!-- SmallMessage功能 -->

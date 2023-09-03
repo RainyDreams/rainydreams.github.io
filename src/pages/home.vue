@@ -29,7 +29,9 @@ onMounted(() => {
 
 <template>
   <div class="home">
-    <div class="homeBackground"><img src="../assets/background.svg" alt=""></div>
+    <div class="homeBackground">
+      <img src="../assets/background.svg" alt="">
+    </div>
     <Feature></Feature>
     <div class="container content">
       <div ref="text"></div>
@@ -95,6 +97,7 @@ body {
   position: absolute;
   z-index: -1;
   width:100%;
+  height:100%;
   top:0;
   left:0;
   overflow: hidden;
@@ -111,4 +114,5 @@ body {
     -o-user-select: none;
   }
 }
+
 </style>

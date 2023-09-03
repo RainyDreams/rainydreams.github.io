@@ -32,7 +32,10 @@ export function getFriendlyTime(time1, time2 = new Date(), type = "string") {
   }
 }
 
-
+/**
+ * @param {Number} len 获取的字符串长度
+ * @returns 
+ */
 export function getRandomString(len) {
   len = len || 32;
   var $chars = 'AmSTnpN5Rz2EcdCKMXZabersYDW4xtwPBFGy36fhHJQijk78'; 
@@ -43,6 +46,76 @@ export function getRandomString(len) {
   } return pwd;
 }
 
+
+/**
+ * @param {Function} fn 要执行的函数
+ * @param {TimeRanges} t 延迟的时间
+ * @returns {Function}
+ * @name 防抖
+ */
+export 
+function debounce(fn, t) {
+  let timer = null;
+  return function () {
+    let args = arguments;
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+    }, t);
+  };
+}
+
+/**
+ * @param {Function} fn 要执行的函数
+ * @param {TimeRanges} t 延迟的时间
+ * @returns {Function}
+ * @name 节流
+ */
+export 
+function throttle(fn, t) {
+  let timer = null;
+  return function () {
+    let args = arguments;
+    if (!timer) {
+      timer = setTimeout(() => {
+        fn.apply(this, args);
+        timer = null;
+      }, t);
+    }
+  };
+}
+
+/**
+ * @name getDevice
+ * @returns {"Android" | "iPhone" | "iPad" | "Windows" | "MacOS" | "Linux" | "unknown"}
+ * @description 获取设备类型
+ */
+export function getDevice() {
+  let u = navigator.userAgent;
+  let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+  let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+  let isWindows = u.indexOf('Windows') > -1; //windows终端
+  let isMacOS = u.indexOf('Macintosh') > -1; //Mac终端
+  let isLinux = u.indexOf('Linux') > -1; //Linux终端
+  if (isAndroid) {
+    return 'Android';
+  }
+  if (isiOS) {
+    return 'iPhone';
+  }
+  if (isWindows) {
+    return 'Windows';
+  }
+  if (isMacOS) {
+    return 'MacOS';
+  }
+  if (isLinux) {
+    return 'Linux';
+  }
+  return 'unknown';
+}
 /*! 
  * mx.js v0.2.0.007
  * Author Zhangxinyue etc.
