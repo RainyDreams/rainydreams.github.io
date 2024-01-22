@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import Feature from '../components/feature.vue'
+import NewsView from '../components/newsView.vue'
 import TypeIt from 'typeit'
 const text = ref(null)
 const originHtml = ref(null)
@@ -39,7 +40,7 @@ onMounted(() => {
     <div class="container content">
       <div class="hidden" style="display: none;" ref="originHtml">
         <h1 class="big">Hello,</h1>
-        <h2 class="big">My name is RainyDreams.</h2>
+        <h2 class="big">My nickname is RainyDreams.</h2>
         <p>I am a high school student, currently studying in <a href="http://cf2z.cn/">No.2 Senior School of Chifeng<icon-arrow-right-up theme="outline" size="16" fill="#646CFF"/></a>. I am a lover of information technology and also a beginner.</p>
         <p>If you are an electronic enthusiast like me, please follow me on <a href="https://github.com/RainyDreams">GitHub<icon-arrow-right-up theme="outline" size="16" fill="#646CFF"/></a>.</p>
         <p>In addition to completing academic tasks and programming, I also like calligraphy, painting and classical music.</p>
@@ -47,21 +48,17 @@ onMounted(() => {
         <p>If you want to know more about ChiziIngiin, please move to the <router-link to="/about">About Page</router-link>.</p>
       </div>
       <!-- <hr> -->
-      <p>注意：</p>
-      <p>本网站的作者可能因为学业原因无法及时更新网站</p>
       <p>The author of this website may not be able to update the website in a timely manner due to LearingInSchool reasons</p>
-      <hr>
-      <!-- <h2>RECENTLY</h2>
-      <p>《黄河大合唱》</p>
-      <hr> -->
+      <!-- <hr/> -->
+      <NewsView/>
+      <!-- <hr/> -->
       <h2 class="big">TOOLS</h2>
       <p>Here are some gadgets I made to practice my trivial technique</p>
       <p><router-link to="/tools">Go To Experience</router-link></p>
       <h2 class="big">MAXIM</h2>
       <p>I often like to collect some Maxim to motivate myself to achieve my goals and use them as my own action guide</p>
       <p><router-link to="/maxims">Learn More</router-link></p>
-      <h2 class="big">SOME QUESTIONS</h2>
-      <p><router-link to="">Why is this page in English?</router-link></p>
+      <h2 class="big">Q&A</h2>
       <p><router-link to="">Did you make this website yourself?</router-link></p>
       <p><router-link to="">What are you doing recently?</router-link></p>
       <p><router-link to="">How did you learn to program?</router-link></p>

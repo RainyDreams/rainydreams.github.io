@@ -55,23 +55,24 @@ function close(){
         <div :class="{ mobile: true, show: showMenu,noInPrint:true }">
           <div class="navList">
             <div class="navItem">
-              <router-link @click="close()" to="/">首页</router-link>
+              <router-link @click="close()" to="/">Home</router-link>
             </div>
             <div class="navItem">
-              <router-link @click="close()" to="/introduce">简介</router-link>
+              <router-link @click="close()" to="/introduce">Focus</router-link>
             </div>
             <div class="navItem">
-              <router-link @click="close()" to="/thanks">致谢</router-link>
+              <router-link @click="close()" to="/introduce">Introduce</router-link>
             </div>
             <div class="navItem">
-              <router-link @click="close()" to="/about">关于</router-link>
+              <router-link @click="close()" to="/thanks">Thanks</router-link>
             </div>
-            <div 
-              class="navItem noMobile"
-            >
+            <div class="navItem">
+              <router-link @click="close()" to="/about">About</router-link>
+            </div>
+            <div class="navItem noMobile">
               <router-link @click="close()" to="/messageList">
                 <!-- <icon-remind theme="outline" size="19" fill="#444" /> -->
-                <span>通知</span>
+                <span>Message</span>
                 <div v-show="showRed" class="_red"></div>
               </router-link>
             </div>

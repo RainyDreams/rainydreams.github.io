@@ -18,11 +18,6 @@ var cb = function (err, val) {
     return err;
   }
 
-  // let pages = val.deployments.read().then(e=>{
-  //   console.log(e);
-  // })
-  // console.log("🚀 ~ file: footer.vue:22 ~ cb ~ pages:", pages)
-
   
 
   val.commits.read()
@@ -46,19 +41,9 @@ octo.repos("RainyDreams", "RainyDreams").fetch(cb);
     <div class="footer">
       <div class="_container">
         <div class="container">
-          <!-- <div class="sitemap"></div>
-          <div class="_footer">
-            <div class="license"></div>
-            <div class="copyright">© 2023 Zhang.</div>
-            <div class="details">你正在浏览我的个人网站</div>
-          </div> -->
           <div class="focus_me">
             <span class="_title">Focus Me</span>
             <ul class="focus_list">
-              <!-- <li>Wechat</li>
-              <li>GitHub</li>
-              <li>Twitter(X)</li>
-              <li></li> -->
               <li>
                 <a href="//github.com/RainyDreams/" target="_blank">
                   <icon-github-one
@@ -112,7 +97,7 @@ octo.repos("RainyDreams", "RainyDreams").fetch(cb);
             <router-link to="/cookie">Cookie和隐私</router-link>
           </div>
           <div class="copyright">
-            Copyright © 2021 - 2023 ChiziIngiin & Zhang.. All Rights Reserved.
+            Copyright © 2021 - 2024 ChiziIngiin & ZhangXinyue All Rights Reserved.
           </div>
         </div>
       </div>

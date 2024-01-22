@@ -56,6 +56,9 @@ h2.big, h2[big] {
   font-weight: 700;
 
 }
+p{
+  font-size: 1.08em;
+}
 p.big, p[big]{
   font-size: 1.2em;
   line-height: 1.4;
