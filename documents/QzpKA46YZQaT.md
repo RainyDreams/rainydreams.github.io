@@ -1,5 +1,5 @@
-# 开源软件列表
-| 软件包名               |  使用版本|
+# List of open source software
+| The package name      | Version |
 | :---                  |  :---:  |
 | @icon-park/vue-next   | 1.4.2   |
 | jsonp                 | 0.2.1   |
@@ -13,7 +13,7 @@
 | vue-jsonp             | 2.0.0   |
 | vue-router            | 4.2.4   |
 
-# 开源工具列表
+# List of open source tools
 - Microsoft VSCode
 - NodeJs          
 - NPM             
