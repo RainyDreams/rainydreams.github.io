@@ -18,32 +18,18 @@
 //   }
 // }
 import {ref,onMounted} from 'vue'
-const swiper = ref()
-const swiperWidth = ref(0)
-const swiperHeight = ref(0)
 
-onMounted(()=>{ 
-  console.dir(swiper.value.offsetWidth);
-  swiperWidth.value = (swiper.value.offsetWidth - 200)+'px';
-  swiperHeight.value = (swiper.value.offsetWidth - 200)/2.35+'px';
-})
 </script>
 
 <template>
   <div class="newsView">
     <h2 class="big">FOCUS</h2>
-    <div class="content" ref="swiper">
-      <div class="swiper-main" :style="{width:swiperWidth,height:swiperHeight}">
-        <div class="swiper-img">
-          <div :style="{'background-image':'url(https://s11.ax1x.com/2024/01/22/pFZr8NF.png)'}"></div>
-        </div>
-      </div>
-      <div class="swiper-list" ref="swiperList">
-        <ul>
-          <li>XXXXXX</li>
-          <li>ZZZZZZ</li>
-          <li>YYYYYY</li>
-        </ul>
+    <p>To learn more about me, please follow me on WeChat: "ChiziingiinGroup"</p>
+    <div class="content row " ref="swiper">
+      <div class="col-sm-12 col-md-4">
+        <div class="news-image"></div>
+        <div class="news-title"></div>
+        <div class="news-describe"></div>
       </div>
     </div>
   </div>
@@ -64,35 +50,6 @@ onMounted(()=>{
     background: #fff;
     border-radius: 0;
     overflow: hidden;
-  }
-  .swiper-main{
-    width: 100%;
-    .swiper-img{
-      height:100%;
-      div{
-        height:100%;
-        background-repeat: no-repeat;
-        background-size: auto 100%;
-      }
-    }
-  }
-  .swiper-list{
-    width:200px;
-    ul{
-      display: flex;
-      flex-direction: column;
-      margin: 0;
-      li{
-        list-style: none;
-        height: 50px;
-        line-height: 50px;
-        border-bottom: 1px solid #ccc;
-        padding-left: 20px;
-        &:last-child{
-          border-bottom: none;
-        }
-      }
-    }
   }
 }
 @media screen and (min-width: 960px) {

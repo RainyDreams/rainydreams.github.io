@@ -1,7 +1,7 @@
 import Home from '../pages/home.vue'
 import Tools from '../pages/tools.vue'
 import About from '../pages/about.vue'
-import Introduce from '../pages/introduce.vue'
+import Introduction from '../pages/introduce.vue'
 import Thanks from '../pages/thanks.vue'
 import MessageList from '../pages/messageList.vue'
 
@@ -16,7 +16,6 @@ import Cookie from '../pages/license/cookie.vue'
 import ToolsCode from '../pages/tools/code.vue'
 import ToolsCodeHelp from '../pages/tools/codehelp.vue'
 
-import Maxims from '../pages/maxims/index.vue'
 const _Tools = [
   {
     path: '/tools/code',
@@ -25,20 +24,13 @@ const _Tools = [
     meta: { title: '加密解密' }
   },
   {
-    path: '/tools/codehelp',
+    path: '/tools/codeHelp',
     name: 'CodeHelp',
     component: ToolsCodeHelp,
     meta: { title: '帮助' }
   }
 ]
-const _Maxims = [
-  {
-    path: '/maxims',
-    name: 'Maxims',
-    component: Maxims,
-    meta: { title: 'MAXIMS' }
-  }
-]
+
 const _License = [
   {
     path:"/userlicense",
@@ -78,25 +70,25 @@ const list = [
     path: '/about',
     name: 'About',
     component: About,
-    meta: { title: '关于' }
+    meta: { title: 'About' }
   },
   {
-    path: '/introduce',
-    name: 'Introduce',
-    component: Introduce,
-    meta: { title: '简介' }
+    path: '/introduction',
+    name: 'Introduction',
+    component: Introduction,
+    meta: { title: 'Introduction' }
   },
   {
     path: '/thanks',
     name: 'Thanks',
     component: Thanks,
-    meta: { title: '致谢' }
+    meta: { title: 'Thanks' }
   },
   {
     path: '/messageList',
     name: 'MessageList',
     component: MessageList,
-    meta: { title: '消息列表' }
+    meta: { title: 'MessageList' }
   },
   {
     path: '/doc',
@@ -108,7 +100,6 @@ const list = [
   ..._Errors,
   ..._License,
   ..._Tools,
-  ..._Maxims
 ]
 
 

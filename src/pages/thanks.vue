@@ -1,15 +1,15 @@
 <template>
   <div class="container content">
     <div class="document">
-      <h1>致谢</h1>
-      <p>你们好！</p>
-      <p>非常感谢你们以至于来对于我以及赤子英金的关注与支持</p>
-      <p>在此，我要特别感谢以下人员/组织：</p>
+      <h1>Thanks</h1>
+      <p>Hello!</p>
+      <p>Thank you very much for your attention and support to me and ChiziingiinGroup</p>
+      <p>In particular, I would like to thank the following people/organizations:</p>
       <ul class="order_list">
-        <li>我的家人一直以来对我的支持。</li>
-        <li>我的朋友一直以来对我的鼓励。</li>
-        <li>开源社区（GitHub）及其开源软件精神</li>
-        <li>开源软件，详见本软件所使用的 <router-link to="/doc?id=QzpKA46YZQaT">开源软件列表</router-link> </li>
+        <li>My family</li>
+        <li>My friends</li>
+        <li>The open source community (GitHub) and its open source software ethos</li>
+        <li>Open source software, <router-link to="/doc?id=QzpKA46YZQaT">the list of open source software used in this software</router-link> </li>
       </ul>
       <!-- <h3>特别感谢</h3>
       <ul>

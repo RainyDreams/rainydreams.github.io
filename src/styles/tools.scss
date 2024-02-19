@@ -77,11 +77,21 @@
   font-size: 12px;
   line-height: 1.2em;
   opacity: 0.8;
+  display: flex;
+  align-items: stretch;
+  span{
+    display: inline-flex;
+    align-items: stretch;
+    .i-icon{
+      display: inline-block;
+      margin-right: 2px;
+    }
+  }
 }
-.pd-box .ctbox span.ifm .mxicon{
-  margin-right: 4px;
-  margin-left: 4px;
-}
+// .pd-box .ctbox span.ifm .mxicon{
+//   margin-right: 4px;
+//   margin-left: 4px;
+// }
 .DBC{
   font-size: 13px;
   color:var(--ActiveColor);
