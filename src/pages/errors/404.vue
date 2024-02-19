@@ -3,7 +3,7 @@ import { ref } from "vue";
 import { useRoute } from "vue-router";
 const route = useRoute();
 const to = ref(decodeURIComponent(route.params.to))
-
+;;
 </script>
 <template>
   <div class="container">

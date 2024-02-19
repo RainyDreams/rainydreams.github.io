@@ -1,5 +1,6 @@
 <script setup>
 import DocImage from '../components/docImage.vue';
+import { RouterLink } from 'vue-router';
 // import { onMounted, ref } from "vue";
 // import { useRoute } from 'vue-router'
 // const route = useRoute();
@@ -29,30 +30,19 @@ import DocImage from '../components/docImage.vue';
       </DocImage></p>
       <p style="text-align:center;font-size:14px;margin-top:-8px;font-family: Arial, Helvetica, sans-serif;"></p>
       <h2>管理人员</h2>
-      <p>赤子英金创始人兼总负责人：<a href="">肖遥（笔）</a></p>
-      <p>赤子英金创始人兼副总负责人：邬源（笔）</p>
+      <p>赤子英金创始人：<a href="">张新越 RainyDreams</a></p>
+      <p>赤子英金监制：邬源（笔）</p>
       <h2 id="thanks">致谢</h2>
-      <h3>为赤子英金的发展无私奉献的人们(排名不分先后)</h3>
-      <p style="display:flex;flex-wrap: wrap;">
-        <a class="usernamebox" title=""><img alt="@" src="../assets/header/lxy.jpg"><span>吕雪阳</span></a>
-        <a class="usernamebox" title=""><img alt="@" src="../assets/header/hemiao.jpg"><span>萦（笔）</span></a>
-        <a class="usernamebox" title=""><img alt="@" src="../assets/header/zyx.jpg"><span>徐安（笔）</span></a>
-        <a class="usernamebox" title=""><img alt="@" src="../assets/header/zwx.jpg"><span>Vicent（笔）</span></a>
-        <a class="usernamebox" title=""><img alt="@" src="../assets/header/bh.jpg"><span>包涵</span></a>
-        <a class="usernamebox" title=""><img alt="@" src="../assets/header/zhaopengze.png"><span>万万（网）</span></a>
-        <a class="usernamebox" title=""><img alt="@" src="../assets/header/xyt.jpg"><span>望尘莫及（网）</span></a>
-        <a class="usernamebox" title=""><img alt="@" src="../assets/header/yfz.jpg"><span>由由（网）</span></a>
-        <a class="usernamebox" title=""><img alt="@" src="../assets/header/lk.jpg"><span>凌空（网）</span></a>
+      <p style="text-align: center;">
+        <router-link to="/thanks"></router-link>
       </p>
-      <p style="text-align: center;">And More......</p>
       <!-- <h3>为赤子英金的发展提供过帮助的组织</h3>
       <ul class="unorder_list">
       </ul> -->
       <h3>特殊致谢</h3>
       <ul class="unorder_list">
         <li>Github Co,Ltd</li>
-        <li>阿里巴巴集团</li>
-        <li>深圳市腾讯计算机系统有限公司</li>
+        <li>深圳市奥思网络科技有限公司(Gitee)</li>
       </ul>
       <h2>写在后面</h2>
       <!-- <p style="padding:180px 0;line-height:40px;font-size:26px;letter-spacing:4px;font-style:italic;text-align:center;font-family:'Courier New', Courier, monospace">梦想只是开始，探索永不止步</p> -->

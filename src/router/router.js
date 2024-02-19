@@ -1,11 +1,13 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory,createWebHashHistory } from 'vue-router';
 import NProgress from 'nprogress'
-
+// import { createRouter, createWebHashHistory } from "vue-router";
 import list from './router.data.js';
 
 const router = new createRouter({
   //hash
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
+
+  // history: createWebHistory(import.meta.env.BASE_URL),
   // mode: 'history',
   // base: process.env.BASE_URL,
   // history: createRouter(),
@@ -25,6 +27,11 @@ router.beforeEach((to,from, next) => {
   //进度条开始
   // console.log(from)
   // console.log(to,from)
+  if (to.path) {
+    if (window._hmt) {
+      window._hmt.push(['_trackPageview', '/#' + to.fullPath]);
+    }
+  }
   if(to.matched.length === 0){
     next({name:'ERROR404',params:{to:encodeURIComponent(to.fullPath)}})
     return
