@@ -58,10 +58,7 @@ function close(){
               <router-link @click="close()" to="/">Home</router-link>
             </div>
             <div class="navItem">
-              <router-link @click="close()" to="/introduce">Focus</router-link>
-            </div>
-            <div class="navItem">
-              <router-link @click="close()" to="/introduce">Introduce</router-link>
+              <router-link @click="close()" to="/introduction">Introduction</router-link>
             </div>
             <div class="navItem">
               <router-link @click="close()" to="/thanks">Thanks</router-link>
@@ -226,6 +223,7 @@ function close(){
       opacity: 1;
       transition: none;
       background: none;
+      backdrop-filter: none;
     }
     .navList{
       padding: 0;

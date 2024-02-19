@@ -13,9 +13,6 @@ async function digestMessage(message) {
   const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); // convert bytes to hex string
   return hashHex;
 }
-// export function debug(){
-//   console.log(CHANGSHU)
-// }
 function DoPass(e){
   let  DECODE_STR = ''
   for (let i=0; i < e.length; i++) {
@@ -24,7 +21,6 @@ function DoPass(e){
   }
   return DECODE_STR
 }
-// const PUBLIC_KEY = 'h728-s$d@e569^q!w4r3b*z0';
 import { weBtoa, weAtob } from './jwt';
 function creatMessage(i,e,t,...args){
   return {

@@ -60,24 +60,12 @@ function leaveEfect(i) {
 <template>
   <div class="container content">
     <div class="section-header mt-0">
-      <h2>工具</h2>
-      <h3>面向用户，提供高效便捷实用的工具</h3>
+      <h2>TOOLS</h2>
+      <h3>Some tools I made to pass my time, I hope they can help you</h3>
     </div>
     <div class="tools-view row">
       <template v-for="(item, i) in tool_list" :key="i">
-        <div class="col-md-4">
-          <!-- <router-link :to="`/tools/${item.name}`" ref="card" class="tools-item"
-            :style="{transform:item.rotate??'none'}">
-              <div class="RangeCover" @mousemove="hoverEffect($event,i)" @mouseleave="leaveEfect(i)"></div>
-              <div class="title">{{ item.title }}</div>
-              <div class="describe">{{ item.desc }}</div>
-              <div class="author">{{ item.author }}</div>
-              <div class="update-time">更新时间：{{ item.updateTime }}</div>
-              <div class="background" v-if="item.img">
-                <img src="" alt="" />
-                <div class="masking-out"></div>
-              </div> -->
-          <!-- </router-link> -->
+        <div class="col-md-4 col-sm-6">
           <div class="pd-box">
             <div class="section">
               <div class="state" style="background-color: aquamarine">
@@ -89,11 +77,13 @@ function leaveEfect(i) {
               <h3 class="title">{{item.title}}</h3>
               <div class="content">
                 <p>{{item.desc}}</p>
-                <p>最后更新时间{{item.updateTime}}</p>
+                <!-- <p>Update time:{{item.updateTime}}</p> -->
                 <div class="ctbox">
-                  <span class="ifm"><span class="mxicon">&#xE8F4;</span><span>{{ item.look }}</span></span>
+                  <span class="ifm">
+                    <span><icon-update-rotation theme="outline" size="12" fill="#333"/>{{item.updateTime}}</span>
+                  </span>
                   <router-link :to="`/tools/${item.name}`" class="btn h-light">
-                    <span>了解详情</span>
+                    <span>Try it</span>
                     <span class="mxicon h-showlr" mx-width="14px">&#xE941;</span>
                   </router-link>
                 </div>

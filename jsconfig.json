@@ -1,25 +1,24 @@
-//jsconfig.json
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "ES6",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "./",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ]
-    },
-    "types": [
-      "node"
-    ],
+"compilerOptions": {
+  "module": "commonjs",
+  "target": "ES6",
+  "sourceMap": true,
+  "outDir": "./dist",
+  "baseUrl": "./",
+  "paths": {
+    "@/*": [
+      "./src/*"
+    ]
   },
-  "exclude": [ // 要排除的文件
-    "node_modules",
-    "**/node_modules/*"
+  "types": [
+    "node"
   ],
-  "include": [ // 包含的文件
-    "src/*.js"
-  ]
+},
+"exclude": [ // 要排除的文件
+  "node_modules",
+  "**/node_modules/*"
+],
+"include": [ // 包含的文件
+  "src/*.js"
+]
 }

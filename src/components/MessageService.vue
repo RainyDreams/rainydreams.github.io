@@ -30,38 +30,6 @@ const addTask = (prFn,order) => {
   scheduler.add(() => doTask(prFn)).then()
 }
 
-
-/*
-// addTask(async ()=>{
-//   await new Promise(resolve => setTimeout(resolve,5000))
-//   console.log('开始执行函数1')
-// },11)
-
-// addTask((resolve)=>{
-//     setTimeout(() => {
-//     console.log('timeout');
-//       resolve()
-//     }, 10000)
-// }),1)
-
-// addTask(new Promise((resolve)=>{
-//     setTimeout(() => {
-//     console.log('timeou2t');
-//     resolve()
-//     }, 10000)
-// }),2)
-
-// addTask(async ()=>{
-//   await new Promise(resolve => setTimeout(resolve,1000))
-//   console.log('开始执行函数3')
-// },33)
-
-
-
-
-// output: 2 3 1 4
-*/
-
 function findbyid(list,id){
   const index = list.findIndex(item=>item.id==id)
   if(index==-1) return null
@@ -150,8 +118,6 @@ watch(
   } else {
 
   }
-  
-
 });
 
 
