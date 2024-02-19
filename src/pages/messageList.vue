@@ -35,7 +35,7 @@ onMounted(()=>{
   mss = new MessageService(message);
   mss.smallAlert({title:'加密成功',text:'请复制'})
 
-})
+});;
 </script>
 <template >
   <div class="container content">

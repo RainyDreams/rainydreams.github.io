@@ -36,7 +36,7 @@ const originHtml = ref(null)
     <Feature></Feature>
     <div class="container content">
       <div ref="text"></div>
-      <div class="hidden" ref="originHtml">
+      <div ref="originHtml">
         <h1 class="big">Hello,</h1>
         <h2 class="big">My nickname is RainyDreams.</h2>
         <p>I am a high school student, currently studying in <a href="http://cf2z.cn/">No.2 Senior School of Chifeng<icon-arrow-right-up theme="outline" size="16" fill="#646CFF"/></a>. I am a lover of information technology and also a beginner.</p>
