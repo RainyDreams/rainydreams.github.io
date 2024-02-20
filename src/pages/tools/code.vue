@@ -135,7 +135,7 @@ const copyPwd = (e)=>{
         })
       }
   }
-}
+};;
 
 
 
@@ -163,10 +163,10 @@ const copyPwd = (e)=>{
         <div class="pwd-input-item-label">输入</div>
         <input class="pwd-input-item-input" type="text" v-model="input1"/>
       </div>
-      <div class="pwd-input-item">
+      <!-- <div class="pwd-input-item">
         <div class="pwd-input-item-label">密码</div>
         <input class="pwd-input-item-input" placeholder="可选默认使用公钥加密" type="text" v-model="pwd1"/>
-      </div>
+      </div> -->
       <button class="pwd-input-btn" @click="doEncode()">加密</button>
       <div class="pwd-input-item">
         <input class="pwd-copyarea" type="text" placeholder="输出" readonly ref="v1" v-model="output1"/>
@@ -182,10 +182,10 @@ const copyPwd = (e)=>{
         <div class="pwd-input-item-label">输入</div>
         <input class="pwd-input-item-input" type="text" v-model="input2"/>
       </div>
-      <div class="pwd-input-item">
+      <!-- <div class="pwd-input-item">
         <div class="pwd-input-item-label">密码</div>
         <input class="pwd-input-item-input" placeholder="可选" type="text" v-model="pwd2"/>
-      </div>
+      </div> -->
       <button class="pwd-input-btn" @click="doDecode()">解密</button>
       <div class="pwd-input-item">
         <input class="pwd-copyarea" type="text" placeholder="输出" readonly ref="v2" v-model="output2"/>
@@ -300,13 +300,16 @@ const copyPwd = (e)=>{
   font-weight: 500;
   color:#999;
 }
-.pwd-input-title::after{
+.pwd-input-title span{
+  position: relative;
+}
+.pwd-input-title span::after{
   content:"";
   position: absolute;
-  left:0;
-  bottom:6px;
+  left:-2px;
+  bottom:-3px;
   height:8px;
-  width:100%;
+  width:calc(100% + 6px);
   z-index: -1;
   opacity: 0.8;
   background: #008dff;

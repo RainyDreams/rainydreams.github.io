@@ -6,11 +6,11 @@ const card = ref(null);
   tool_list.value = [
     {
       name: "code",
-      title: "加密解密",
+      title: "CRSA",
       desc: "将字符串按照指定规则加密解密",
       author: "Zhang",
-      version: '3.0',
-      updateTime: "2023-08-20",
+      version: '4.2',
+      updateTime: "2024-02-20",
       look:'none'
     },
   ];
